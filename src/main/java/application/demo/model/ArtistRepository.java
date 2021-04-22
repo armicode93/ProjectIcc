@@ -1,4 +1,4 @@
-package model;
+package application.demo.model;
 
 import org.springframework.data.repository.CrudRepository;    //definire le methode d acces a la BD
 
