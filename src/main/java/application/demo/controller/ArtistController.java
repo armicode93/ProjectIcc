@@ -32,7 +32,7 @@ public class ArtistController {
     }
 
     @GetMapping("/artists/{id}") //methode show pour recuperer un artiste avec son id e affiche dans show.html
-    public String show(Model model, @PathVariable("id") String id){ // path serve per far corrispondere id del url con quello della methode how
+    public String show(Model model, @PathVariable("id") String id){ // path serve per far corrispondere id del url con quello della methode show
         Artist artist = service.getArtist(id);
         //get artist est utilie pour recuperer l'artiste dont l-id correspond,
         //nous l-ajoutons au modele avant de renvoyer le template show.html

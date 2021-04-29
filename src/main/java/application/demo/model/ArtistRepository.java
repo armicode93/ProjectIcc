@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ArtistRepository extends CrudRepository <Artist, Long> {
         List<Artist> findByLastname(String lastname);
+        List<Artist> findByFirstname(String firstname);
 
         Artist findById(long id);
 
