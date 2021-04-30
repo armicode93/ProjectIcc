@@ -3,7 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-      layout:decorate="~{layouts/main}">  // heritage de layout  main.html
+      layout:decorate="~{layouts/main}">  // heritage de layout  main.html //
 <head>
     <title>Liste des artistes</title>
 </head>
@@ -14,9 +14,9 @@
 
         <table th:unless="${#lists.isEmpty(artists)}">
             <thead>
-            <tr>
-                <th th:text="#{artist.firstname}">Firstname</th>
-                <th th:text="#{artist.lastname}">Lastname</th>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
             </tr>
             </thead>
             <tbody>

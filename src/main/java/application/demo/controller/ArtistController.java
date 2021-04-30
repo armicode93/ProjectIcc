@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@Controller
 public class ArtistController {
     @Autowired // permet d initialiser automatiquement l'attribut service par injection de depandence
     ArtistService service; //permet utiliser methodes metiers qui manipulent donnee
 
     @GetMapping("/artists")
 
-    public String index(Model model )  {
+    public String index(Model model)  {
         List<Artist> artists = service.getAllArtists();
 
         model.addAttribute("artists",artists);

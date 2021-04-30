@@ -1,9 +1,8 @@
 package application.demo.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+
 @Data //no setter no getter ,with lombook
 @Entity //permet de definre la classe comme entite, un modele mappe avec un source de donn{es, chaque ligne de code,corrisponde a un champs de la table
 @Table(name="artists")
@@ -15,8 +14,5 @@ public class Artist {
     private Long id;
     private String firstname;
     private String lastname;
-
-
-
 
  }
