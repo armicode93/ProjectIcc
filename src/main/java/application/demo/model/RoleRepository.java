@@ -1,4 +1,4 @@
-/*package application.demo.model;
+package application.demo.model;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,4 +10,3 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
 
 
 }
-*/

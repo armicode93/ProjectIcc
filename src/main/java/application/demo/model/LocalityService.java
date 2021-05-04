@@ -1,4 +1,4 @@
-/*package application.demo.model;
+package application.demo.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,15 @@ public class LocalityService {
     @Autowired
     private LocalityRepository repository;
 
-    public List<Locality> getAll() {
+    public List<Locality> getAllLocality() {
         List<Locality> localities = new ArrayList<>();
+
+        repository.findAll().forEach(localities::add);
+
+        return localities;
     }
 
-    public Locality get(String id){
+    public Locality getLocality(String id){
         Long indice = (long) Integer.parseInt(id);
         Optional<Locality> locality = repository.findById(indice);
 
@@ -41,4 +45,3 @@ public class LocalityService {
 
 
 }
-*/

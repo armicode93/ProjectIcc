@@ -1,9 +1,8 @@
-
-/*package application.demo.model;
+package application.demo.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Table;
+
 
 
 
@@ -24,4 +23,3 @@ public class Locality {
 
     public Locality(){ }
 }
-*/

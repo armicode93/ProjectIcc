@@ -13,6 +13,7 @@
         <h1 th:text="${title}">Liste des artistes</h1>
 
         <table th:unless="${#lists.isEmpty(artists)}">
+            <!-- unless affiche sauf si la condition est vrais # -->
             <thead>
                 <tr>
                     <th>Firstname</th>

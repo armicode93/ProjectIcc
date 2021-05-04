@@ -1,8 +1,9 @@
-/*package application.demo.model;
+package application.demo.model;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TypeRepository extends CrudRepository {
+public interface TypeRepository extends CrudRepository <Type, Long> {
+
+    Type findById(long id);
     Type findByType(String type);
 }
-*/

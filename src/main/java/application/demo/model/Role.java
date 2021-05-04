@@ -1,4 +1,4 @@
-/*package application.demo.model;
+package application.demo.model;
 
 import lombok.Data;
 
@@ -23,4 +23,3 @@ public class Role {
         this.role = role;
     }
 }
-*/

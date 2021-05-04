@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+
+<head>
+    <title>Liste de localite</title>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1 th:text="${title}">Liste des role</h1>
+
+        <ul th:unless="${#lists.isEmpty(localities)}">
+            <li th:each="locality :${localities}"
+                th:text="${localities.localities}"
+            th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
