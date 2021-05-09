@@ -1,7 +1,8 @@
-package application.demo.controller;
+package be.iccbxl.pid.controller;
 
-import application.demo.model.Type;
-import application.demo.model.TypeService;
+import be.iccbxl.pid.model.Type;
+
+import be.iccbxl.pid.model.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

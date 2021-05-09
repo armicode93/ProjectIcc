@@ -9,7 +9,7 @@
     <title>Liste des Role</title>
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <div layout:fragment="content">
         <h1 th:text="${title}">Liste des role</h1>
 
@@ -17,6 +17,6 @@
             <li th:each="role :${roles}" th:text="${role.role}">Roles</li>
         </ul>
     </div>
-    </div>
+</div>
 </body>
 </html>

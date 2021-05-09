@@ -8,11 +8,11 @@
         <version>2.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>application</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>be.iccbxl.pid</groupId>
+    <artifactId>ReservationsSpringBoot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ProjectIntegrationAPP</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Reservations-Spring-Boot</name>
+    <description>Projet Reservations avec Spring Boot par Victor,Yves,Naceur,Felicien,Walid</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -25,6 +25,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
@@ -40,8 +41,15 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -60,14 +68,11 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
-
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
                 <configuration>
                     <excludes>
                         <exclude>
@@ -81,3 +86,4 @@
     </build>
 
 </project>
+

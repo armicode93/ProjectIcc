@@ -1,4 +1,4 @@
-package application.demo.config;
+package be.iccbxl.pid.config;
 //enregistration instane de Layout Dialect
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;

@@ -1,12 +1,13 @@
-package application.demo.controller;
+package be.iccbxl.pid.controller;
 
-import application.demo.model.Role;
-import application.demo.model.RoleService;
+import be.iccbxl.pid.model.Role;
+import be.iccbxl.pid.model.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class RoleController {
 
     public String index2(Model model)
     {
-        List <Role> roles = service.getAllRole();
+        List<Role> roles = service.getAllRole();
         model.addAttribute("roles",roles);
         model.addAttribute("title","Liste de role");
 

@@ -1,12 +1,14 @@
-package application.demo.model;
+package be.iccbxl.pid.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 @Data
 @Entity
 @Table(name="roles")
+@NoArgsConstructor
+
 
 public class Role {
 
@@ -16,10 +18,13 @@ public class Role {
     private Long id;
     private String role;
 
-    public Role () { }
 
     public Role(String role) {
         super();
         this.role = role;
     }
+
+
+
 }
+

@@ -3,25 +3,26 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-      layout:decorate="~{layouts/main}">  // heritage de layout  main.html //
+      layout:decorate="~{layouts/main}">
 <head>
     <title>Liste des artistes</title>
 </head>
 <body>
 <div class="container">
     <div layout:fragment="content">
+        <!-- heritage de layout  main.html # -->
         <h1 th:text="${title}">Liste des artistes</h1>
 
-        <table th:unless="${#lists.isEmpty(artists)}">
+        <table class="table" th:unless="${#lists.isEmpty(artists)}">
             <!-- unless affiche sauf si la condition est vrais # -->
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="artist : ${artists}">
+            <tr scope="row" th:each="artist : ${artists}">
                 <td th:text="${artist.firstname}">Bob</td>
                 <td th:text="${artist.lastname}">Sull</td>
             </tr>

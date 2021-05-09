@@ -1,4 +1,4 @@
-package application.demo.model;
+package be.iccbxl.pid.model;
 
 import org.springframework.data.repository.CrudRepository;
 

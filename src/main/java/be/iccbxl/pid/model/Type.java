@@ -1,25 +1,24 @@
-package application.demo.model;
+package be.iccbxl.pid.model;
 
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
-
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="localities")
+@Table(name="types")
+@NoArgsConstructor
+@AllArgsConstructor
 
-public class Locality {
-
+public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
-    private String postalCode;
-    private String locality ;
+    private String type;
 
-    public Locality(){ }
+
 }
+

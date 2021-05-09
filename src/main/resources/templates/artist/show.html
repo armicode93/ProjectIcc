@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layouts/main}">
 <head>
     <title>Liste des artistes</title>
 </head>
 <body>
-    <div class="container">
-        <div layout: fragment="content">
+<div class="container">
+    <div layout:fragment="content">
 
-            <h1 th:text="${artist.firstname} +' '+ ${artist.lastname}">Bob Sull</h1>
+        <h1 th:text="${artist.firstname} +' '+ ${artist.lastname}">Bob Sull</h1>
 
-            <!-- <h1 th:text="|${artist.firstname} ${artist.lastname}|">Bob Sull</h1> # -->
-            <!-- // la barre vertical cest une concatenation,soit on fais avec le + soit avec la barre     -->
+        <!-- <h1 th:text="|${artist.firstname} ${artist.lastname}|">Bob Sull</h1> # -->
+        <!-- // la barre vertical cest une concatenation,soit on fais avec le + soit avec la barre     -->
 
-     </div>
-     </div>
- </body>
+    </div>
+</div>
+</body>
+</html>

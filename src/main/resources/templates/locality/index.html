@@ -10,15 +10,15 @@
 </head>
 <body>
 <div class="container">
-    <div layout:fragment="content">
-        <h1 th:text="${title}">Liste des role</h1>
+    <div class="container">
+        <div layout:fragment="content">
+            <h1 th:text="${title}">Liste des localités</h1>
 
-        <ul th:unless="${#lists.isEmpty(localities)}">
-            <li th:each="locality :${localities}"
-                th:text="${localities.localities}"
-            th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</li>
-        </ul>
+            <ul th:unless="${#lists.isEmpty(localities)}">
+                <li th:each="locality : ${localities}"
+                    th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</li>
+            </ul>
+        </div>
     </div>
-</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package application.demo;
+package be.iccbxl.pid;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,19 +1,19 @@
-package application.demo.model;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package be.iccbxl.pid.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ArtistService {
     @Autowired
     private ArtistRepository artistRepository;
 
-    public List<Artist> getAllArtists(){
-        List <Artist> artists = new ArrayList<>();
+
+    public List<Artist> getAllArtists() {
+        List<Artist> artists = new ArrayList<>();
 
         artistRepository.findAll().forEach(artists::add);
 
@@ -26,8 +26,7 @@ public class ArtistService {
         return artistRepository.findById(indice);
     }
 
-    public void addArtist(Artist artist)
-    {
+    public void addArtist(Artist artist) {
         artistRepository.save(artist);
     }
 
@@ -40,5 +39,6 @@ public class ArtistService {
 
         artistRepository.deleteById(indice);
     }
-
 }
+
+

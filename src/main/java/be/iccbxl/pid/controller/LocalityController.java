@@ -1,12 +1,13 @@
-package application.demo.controller;
+package be.iccbxl.pid.controller;
 
-import application.demo.model.Locality;
-import application.demo.model.LocalityService;
+import be.iccbxl.pid.model.Locality;
+import be.iccbxl.pid.model.LocalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 
@@ -39,3 +40,6 @@ public class LocalityController {
 
     }
 }
+
+
+

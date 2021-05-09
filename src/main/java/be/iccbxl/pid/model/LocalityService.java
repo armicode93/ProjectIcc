@@ -1,4 +1,4 @@
-package application.demo.model;
+package be.iccbxl.pid.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
