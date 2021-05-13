@@ -34,7 +34,7 @@ public class Show {
      * Date de création du spectacle
      */
 
-    @Column(name="created_at")
+    @Column(name="created_at") //date creation spectacle
     private LocalDateTime createdAt;
 
     /**
@@ -62,14 +62,17 @@ public class Show {
     }
 
     public String getSlug() {
+
         return slug;
     }
 
     private void setSlug(String slug) {
+
         this.slug = slug;
     }
 
     public String getTitre() {
+
         return titre;
     }
 
@@ -81,14 +84,17 @@ public class Show {
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public void setDescription(String description) {
+
         this.description = description;
     }
 
     public String getPosterUrl() {
+
         return posterUrl;
     }
 
@@ -109,18 +115,22 @@ public class Show {
     }
 
     public boolean isBookable() {
+
         return bookable;
     }
 
     public void setBookable(boolean bookable) {
+
         this.bookable = bookable;
     }
 
     public double getPrice() {
+
         return price;
     }
 
     public void setPrice(double price) {
+
         this.price = price;
     }
 

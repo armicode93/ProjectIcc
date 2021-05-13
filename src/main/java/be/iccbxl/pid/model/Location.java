@@ -20,7 +20,7 @@ public class Location {
     private String slug;
 
     private String designation;
-    private String adress;
+    private String address;
 
     @ManyToOne
     @JoinColumn(name="locality_id", nullable = false)
@@ -31,19 +31,19 @@ public class Location {
     private String website;
     private String phone;
 
-    @OneToMany
+    @OneToMany(targetEntity=Show.class, mappedBy="location")
     private List<Show> shows = new ArrayList<>();
 
     public Location() {
     }
 
-    public Location(String slug, String designation, String adress, Locality locality, String website, String phone) {
+    public Location(String slug, String designation, String address, Locality locality, String website, String phone) {
         Slugify slg = new Slugify();
 
 
         this.slug = slg.slugify(designation);
         this.designation = designation;
-        this.adress = adress;
+        this.address = address;
         this.locality = locality;
         this.website = website;
         this.phone = phone;
@@ -78,12 +78,12 @@ public class Location {
 
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = address;
     }
 
     public Locality getLocality() {
@@ -112,12 +112,12 @@ public class Location {
         this.phone = phone;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Location [id=" + id + ", slug=" + slug + ", designation=" + designation
                 + ", address=" + adress + ", locality=" + locality + ", website="
                 + website + ", phone=" + phone + "]";
-    }
+    } */
 
     public List<Show> getShows() {
         return shows;
@@ -147,7 +147,7 @@ public class Location {
     @Override
     public String toString() {
         return "Location [id=" + id + ", slug=" + slug + ", designation=" + designation
-                + ", address=" + adress	+ ", locality=" + locality + ", website="
+                + ", address=" + address	+ ", locality=" + locality + ", website="
                 + website + ", phone=" + phone + ", shows=" + shows.size() + "]";
     }
 }

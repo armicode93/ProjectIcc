@@ -12,28 +12,33 @@ public class ShowService {
     @Autowired
     private ShowRepository showRepository;
 
-    public List<Show> getAll() {
+    public List<Show> getAll()
+    {
         List<Show> shows = new ArrayList<>();
         showRepository.findAll().forEach(shows::add);
         return shows;
     }
 
-    public Show get(String id) {
+    public Show get(String id)
+    {
         Long indice = (long) Integer.parseInt(id);
         Optional<Show> show = showRepository.findById(indice);
         return show.isPresent() ? show.get() : null;
     }
-    public void add(Show show) {
+    public void add(Show show)
+    {
         showRepository.save(show);
     }
-    public void update(String id, Show show) {
+    public void update(String id, Show show)
+    {
         showRepository.save(show);
     }
     public void delete(String id) {
         Long indice = (long) Integer.parseInt(id);
         showRepository.deleteById(indice);
     }
-    public List<Show> getFromLocation(Location location) {
+    public List<Show> getFromLocation(Location location)
+    {
         return showRepository.findByLocation(location);
     }
 }

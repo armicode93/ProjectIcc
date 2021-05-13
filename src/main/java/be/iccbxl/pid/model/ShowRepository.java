@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ShowRepository extends CrudRepository<Show, Long> {
     Show findBySlug(String slug);
-    Show findByTitle(String title);
+    Show findByTitre(String titre);
     List<Show> findByLocation(Location location);
 }
