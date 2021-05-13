@@ -12,12 +12,12 @@ import java.util.Optional;
 public class RoleService {
 
     @Autowired
-    private  RoleRepository repository;
+    private  RoleRepository roleRepository;
 
     public List<Role> getAllRole(){
         List <Role> roles = new ArrayList<>();
 
-        repository.findAll().forEach(roles::add);
+        roleRepository.findAll().forEach(roles::add);
 
         return roles;
     }
@@ -25,23 +25,23 @@ public class RoleService {
     public Role getRole(String id)
     {
         Long indice = (long) Integer.parseInt(id);
-        Optional<Role> role = repository.findById(indice);
+        Optional<Role> role = roleRepository.findById(indice);
 
         return role.isPresent() ? role.get() : null;
 
     }
     public void add(Role role)
     {
-        repository.save(role);
+        roleRepository.save(role);
     }
 
     public void update(String id,Role role){
-        repository.save(role);
+        roleRepository.save(role);
     }
 
     public void delete(String id)
     {
         Long indice = (long) Integer.parseInt(id);
-        repository.deleteById(indice);
+        roleRepository.deleteById(indice);
     }
 }

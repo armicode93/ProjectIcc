@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="localities")
-@NoArgsConstructor
+
 @AllArgsConstructor
 public class Locality {
 
@@ -21,10 +21,12 @@ public class Locality {
     private String postalCode;
     private String locality;
 
-    @OneToMany
-    private List <Location> locations = new ArrayList<>();
+    @OneToMany( targetEntity=Location.class, mappedBy="locality" )
+    private List<Location> locations = new ArrayList<>();
     //contien la liste de lieux de spectacle situee dans cette localite, pas de setter
     //pour ca, mais on va mettre de methode plus approprier comme addLocation
+
+    protected Locality(){ }
 
     public Locality addLocation(Location location) {
         if (!this.locations.contains(location)) {

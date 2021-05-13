@@ -1,4 +1,4 @@
-INSERT INTO `locations` (`id`, `locality_id`, `slug`, `designation`, `address`, `website`, `phone`)
+INSERT INTO locations (id,locality_id,slug,designation,address,website,phone)
 VALUES
 (1, 4, 'espace-delvaux-la-venerie', 'Espace Delvaux / La Vénerie', '3 rue Gratès',
  'https://www.lavenerie.be', '+32 (0)2/663.85.50'),

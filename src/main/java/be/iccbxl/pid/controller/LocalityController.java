@@ -31,7 +31,7 @@ public class LocalityController {
     @GetMapping("/localities/{id}")
     public String show(Model model, @PathVariable("id") String id)
     {
-        Locality locality = service.getLocality(id);
+        Locality locality = service.get(id);
 
         model.addAttribute("locality",locality);
         model.addAttribute("title","Fiche d'une localite");

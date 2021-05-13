@@ -10,34 +10,34 @@ import java.util.Optional;
 @Service
 public class TypeService {
     @Autowired
-    private TypeRepository repository;
+    private TypeRepository typeRepository;
 
     public List<Type> getAllType(){
         List<Type> types = new ArrayList<>();
 
-        repository.findAll().forEach(types::add);
+        typeRepository.findAll().forEach(types::add);
 
         return types;
     }
 
-    public Type getType(String id) {
+    public Type get(String id) {
         Long indice = (long) Integer.parseInt(id);
-        Optional<Type> type = repository.findById(indice);
+        Optional<Type> type = typeRepository.findById(indice);
 
         return type.isPresent() ? type.get() : null;
     }
 
     public void add(Type type){
-        repository.save(type);
+        typeRepository.save(type);
     }
     public void update(String id, Type type)  {
-        repository.save(type);
+        typeRepository.save(type);
     }
 
     public void delete(String id) {
         Long indice = (long) Integer.parseInt(id);
 
-        repository.deleteById(indice);
+        typeRepository.deleteById(indice);
     }
 
 
