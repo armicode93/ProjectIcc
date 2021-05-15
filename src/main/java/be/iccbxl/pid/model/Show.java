@@ -16,7 +16,7 @@ public class Show {
 
     @Column(unique = true)
     private String slug;
-    private String titre;
+    private String title; //
     private String description;
 
     @Column(name="poster_url")
@@ -46,11 +46,11 @@ public class Show {
     public Show() {
     }
 
-    public Show(String titre, String description, String posterUrl, Location location, boolean bookable, double price) {
+    public Show(String title, String description, String posterUrl, Location location, boolean bookable, double price) {
         Slugify slg = new Slugify();
-        this.slug = slg.slugify(titre);
+        this.slug = slg.slugify(title);//
 
-        this.titre = titre;
+        this.title = title;         //
         this.description = description;
         this.posterUrl = posterUrl;
         this.location = location;
@@ -71,16 +71,16 @@ public class Show {
         this.slug = slug;
     }
 
-    public String getTitre() {
+    public String getTitle() {
 
-        return titre;
+        return title;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
 
         Slugify slg = new Slugify();
-        this.setSlug(slg.slugify(titre));
+        this.setSlug(slg.slugify(title));
     }
 
     public String getDescription() {
@@ -149,9 +149,9 @@ public class Show {
 
     @Override
     public String toString() {
-        return "Show [id=" + id + ", slug=" + slug + ", title=" + titre
+        return "Show [id=" + id + ", slug=" + slug + ", title=" + title
                 + ", description=" + description + ", posterUrl=" + posterUrl + ", location="
                 + location + ", bookable=" + bookable + ", price=" + price
-                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]"; //
     }
 }

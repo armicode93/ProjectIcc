@@ -14,8 +14,8 @@
             <li th:each="location : ${locations}">
 
                 <span th:text="${location.designation}">Designation</span>
-                <a th:if="${location.website}" th:text="${location.website}" th:href="$
-{location.website}">Website</a>
+                <a th:if="${location.website}" th:text="${location.website}"
+                   th:href="${location.website}">Website</a>
                 <a th:href="@{/locations/{id}(id=${location.id})}">Voir</a>
             </li>
         </ul>
