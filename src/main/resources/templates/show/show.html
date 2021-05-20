@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/main}">
+
+<head>
+    <title>Fiche d'un spectacle</title>
+</head>
+    <body>
+    <div class="container">
+        <div layout:fragment="content">
+            <!-- Affichage image -->
+            <h1 th:text="${show.title}">Title</h1>
+
+            <p th:if="${show.posterUrl}"><img class="picture" th:src="${show.posterUrl}" width="200"/></p>
+
+            <p th:unless="${show.posterUrl}"><canvas width="200" height="100" style="border:1px solid #000000;"></canvas></p>
+            <!-- Affichage image probleme -->
+
+
+            <!-- Affichage dans la meme ligne avec <a></a> -->
+            <!-- Affichage location -->
+            <p th:if="${show.location}"><strong>Lieu: </strong><a th:text="${show.location.designation}"></a>
+
+        </p>
+            <!-- Affichage prix -->
+            <p><strong>Prix: </strong><a th:text="${show.price}+' €'"> </a></p>
+
+            <!-- Affichage reservation -->
+            <!-- unless è praticamente ELSE -->
+
+        <p th:if="${show.bookable}">Réservable</p>
+            <p th:unless="${show.bookable}">Non réservable</p>
+
+        </div>
+    </div>
+    </body>
+</html>

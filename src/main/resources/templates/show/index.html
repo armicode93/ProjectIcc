@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layouts/main}">
+<head>
+    <title>Liste des spectacles</title>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1 th:text="${title}">Liste des spectacles</h1>
+       <ul th:unless="${#lists.isEmpty(shows)}">
+
+            <li th:each="show : ${shows}"
+                th:text="|${show.title} ${show.price}| + ' €'">alexia 9</li>
+            <!-- per metterli tutti nella stessa linea, nella lista -->
+
+
+
+        </ul>
+
+    </div>
+</div>
+</body>
+
+</html>

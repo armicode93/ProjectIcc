@@ -12,7 +12,8 @@
                 <address>
                     <p th:text="${location.address}">Address</p>
             <p th:text="|${location.locality.postalCode} ${location.locality.locality}|">postalCode locality</p>
-            <p th:if="${location.website}"><a th:text="${location.website}" th:href="@{${location.website}}" target="_blank">website</a></p>
+
+                    <p th:if="${location.website}"><a th:text="${location.website}" th:href="@{${location.website}}" target="_blank">website</a></p>
             <p th:unless="${location.website}">Pas de site web</p>
             <p th:if="${location.phone}"><a th:text="${location.phone}" th:href="@{${location.phone}}">phone</a></p>
             <p th:unless="${location.phone}">Pas de téléphone</p>

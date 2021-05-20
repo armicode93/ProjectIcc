@@ -28,7 +28,7 @@ public class LocationController {
 
     }
 
-    @GetMapping("locations/{id}")
+    @GetMapping("/locations/{id}")
 
     public String show(Model model, @PathVariable("id") String id)
     {

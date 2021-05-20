@@ -16,7 +16,7 @@ public class Show {
 
     @Column(unique = true)
     private String slug;
-    private String title; //
+    private String title;
     private String description;
 
     @Column(name="poster_url")
@@ -48,9 +48,9 @@ public class Show {
 
     public Show(String title, String description, String posterUrl, Location location, boolean bookable, double price) {
         Slugify slg = new Slugify();
-        this.slug = slg.slugify(title);//
+        this.slug = slg.slugify(title);
 
-        this.title = title;         //
+        this.title = title;
         this.description = description;
         this.posterUrl = posterUrl;
         this.location = location;
