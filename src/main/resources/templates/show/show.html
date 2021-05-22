@@ -7,12 +7,24 @@
     <title>Fiche d'un spectacle</title>
 </head>
     <body>
-    <div class="container">
+    <div class="container"> <!-- per definire una parte della mai pagina -->
+
+
         <div layout:fragment="content">
+            <div class="container">
+                <!-- adaptation ecran quand je change de appareil -->
+                <div class="row">
+                    <div class ="col-sm-3"></div> <!--- la premiere colonne vaut 3 la deuxieme 9 -->
+                    <div class ="col-sm-9"></div>
+
+                </div>
+
+
+            </div>
             <!-- Affichage image -->
             <h1 th:text="${show.title}">Title</h1>
 
-            <p th:if="${show.posterUrl}"><img class="picture" th:src="${show.posterUrl}" width="200"/></p>
+            <p th:if="${show.posterUrl}"><img class="picture" th:src="@{'/images/'+${show.posterUrl}}" th:alt="${show.posterUrl}" width="200"/></p>
 
             <p th:unless="${show.posterUrl}"><canvas width="200" height="100" style="border:1px solid #000000;"></canvas></p>
             <!-- Affichage image probleme -->
@@ -20,11 +32,11 @@
 
             <!-- Affichage dans la meme ligne avec <a></a> -->
             <!-- Affichage location -->
-            <p th:if="${show.location}"><strong>Lieu: </strong><a th:text="${show.location.designation}"></a>
+            <p th:if="${show.location}"><strong>Lieu: </strong><span th:text="${show.location.designation}">Art Center</span>
 
         </p>
             <!-- Affichage prix -->
-            <p><strong>Prix: </strong><a th:text="${show.price}+' €'"> </a></p>
+            <p><strong>Prix: </strong><span th:text="${show.price}+' €'">9.99 € </span></p>
 
             <!-- Affichage reservation -->
             <!-- unless è praticamente ELSE -->
@@ -33,6 +45,10 @@
             <p th:unless="${show.bookable}">Non réservable</p>
 
         </div>
+
+
     </div>
+
+
     </body>
 </html>
