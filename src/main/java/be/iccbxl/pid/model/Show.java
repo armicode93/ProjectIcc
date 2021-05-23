@@ -5,6 +5,8 @@ import com.github.slugify.Slugify;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="shows")
@@ -43,6 +45,33 @@ public class Show {
     @Column(name="updated_at")
     private LocalDateTime updatedAt;
 
+    @OneToMany(targetEntity = Representation.class, mappedBy ="show")
+    private List<Representation> representations = new ArrayList<>();
+
+    public List<Representation> getRepresentations()
+    {
+        return representations;
+    }
+    public Show addRepresentation(Representation representation)
+    {
+        if(!this.representations.contains(representation)){
+            this.representations.add(representation);
+            representation.setShow(this);
+        }
+        return this;
+    }
+    public Show removeRepresentation(Representation representation)
+    {
+        if(this.representations.contains(representation))
+        {
+            this.representations.remove(representation);
+            if(representation.getLocation().equals(this)){
+                representation.setLocation(null);
+            }
+        }
+        return this;
+    }
+
     public Show() {
     }
 
@@ -59,6 +88,9 @@ public class Show {
 
         this.createdAt = LocalDateTime.now();
         this.updatedAt = null;
+    }
+    public Long getId() {
+        return id;
     }
 
     public String getSlug() {
@@ -152,6 +184,7 @@ public class Show {
         return "Show [id=" + id + ", slug=" + slug + ", title=" + title
                 + ", description=" + description + ", posterUrl=" + posterUrl + ", location="
                 + location + ", bookable=" + bookable + ", price=" + price
-                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]"; //
+                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+                + ", representations=" + representations.size() + "]";
     }
 }

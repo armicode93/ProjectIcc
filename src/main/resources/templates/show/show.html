@@ -24,7 +24,7 @@
             <!-- Affichage image -->
             <h1 th:text="${show.title}">Title</h1>
 
-            <p th:if="${show.posterUrl}"><img class="picture" th:src="@{'/images/'+${show.posterUrl}}" th:alt="${show.posterUrl}" width="200"/></p>
+            <p th:if="${show.posterUrl}"><img class="picture" th:src="@{'/images/'+${show.posterUrl}}" th:alt="${show.posterUrl}" src="/images/default.jpg" alt="" width="200"/></p>
 
             <p th:unless="${show.posterUrl}"><canvas width="200" height="100" style="border:1px solid #000000;"></canvas></p>
             <!-- Affichage image probleme -->
@@ -43,6 +43,8 @@
 
         <p th:if="${show.bookable}">Réservable</p>
             <p th:unless="${show.bookable}">Non réservable</p>
+
+            <nav><a th:href="@{/shows}">Retour à l'index</a></nav>
 
         </div>
 
