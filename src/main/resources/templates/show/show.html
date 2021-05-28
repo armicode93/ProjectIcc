@@ -11,18 +11,12 @@
 
 
         <div layout:fragment="content">
-            <div class="container">
-                <!-- adaptation ecran quand je change de appareil -->
-                <div class="row">
-                    <div class ="col-sm-3"></div> <!--- la premiere colonne vaut 3 la deuxieme 9 -->
-                    <div class ="col-sm-9"></div>
-
-                </div>
 
 
-            </div>
+
+
             <!-- Affichage image -->
-            <h1 th:text="${show.title}">Title</h1>
+            <!-- <h1 th:text="${show.title}">Title</h1>-->
 
             <p th:if="${show.posterUrl}"><img class="picture" th:src="@{'/images/'+${show.posterUrl}}" th:alt="${show.posterUrl}" src="/images/default.jpg" alt="" width="200"/></p>
 
@@ -32,7 +26,8 @@
 
             <!-- Affichage dans la meme ligne avec <a></a> -->
             <!-- Affichage location -->
-            <p th:if="${show.location}"><strong>Lieu: </strong><span th:text="${show.location.designation}">Art Center</span>
+            <p th:if="${show.location}"><strong>Lieu: </strong>
+                <span th:text="${show.location.designation}">Art Center</span>
 
         </p>
             <!-- Affichage prix -->

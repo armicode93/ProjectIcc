@@ -28,6 +28,9 @@ public class Locality {
 
     protected Locality(){ }
 
+    public List<Location> getLocations() {
+        return locations;
+    }
     public Locality addLocation(Location location) {
         if (!this.locations.contains(location)) {
             this.locations.add(location);
@@ -45,6 +48,13 @@ public class Locality {
         }
         return this;
         //ce 2 methode mis a jour la relation bilaterale du cote de  Location ajoutee ou retire
+    }
+
+
+    @Override
+    public String toString() {
+        return "Locality [id=" + id + ", postalCode=" + postalCode + ", locality=" + locality +
+                "]";
     }
 }
 

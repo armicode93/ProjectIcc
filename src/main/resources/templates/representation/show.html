@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Fiche d'une représentation</title>
+</head>
+<body>
+    <div class="container">
+        <div layout:fragmet="content">
+            <article> <!-- rappresenta una sezione autonoma di un documento-->
+                <!-- riutilizzabile in altre pagine-->
+                <!-- <p th:unless="${#lists.isEmpty(representations)}">
+                     <li th:each="representation : ${representations}">-->
+                 <h1>Representation du <span th:text="${date}+' à '+${heure}">
+                    Représentation du 15/01/2020 à 13:30
+                 </span></h1>
+
+
+
+                 <p><strong>Spectacle: </strong>
+                     <span th:if="${representation.show.title}">Ayiti</span>
+                 </p>
+
+
+
+                 <p><strong>Lieu:</strong>
+                     <span th:if="${representation.location}"
+                           th:text="${representation.location.designation}">Art Center
+                 </span>
+
+
+                     <span th:unless="${representation.location}"
+                           th:if="${representation.show.location}"
+                           th:text="${representation.show.location.designation}">Art Center
+                     </span>
+                     <!-- se non esiste il luogo di representation mettiamo il luogo di creazione-->
+
+                    <em th:if="${representation.location}==null and ${representation.show.location}==null">à déterminer</em>
+                 </p>
+
+            </article>
+
+            <nav><a th:href="@{/representations}">Retour à l'index</a></nav>
+        </div>
+    </div>
+</body>
+</html>

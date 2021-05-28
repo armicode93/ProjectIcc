@@ -23,26 +23,23 @@ public class Representation {
     private LocalDateTime when;
 
     @ManyToOne
-    @JoinColumn(name="location_id", nullable = false)
+    @JoinColumn(name="location_id", nullable=true)
     private Location location;
 
     public Representation() {
     }
 
-    public Representation(Long id, Show show, LocalDateTime when, Location location) {
-        this.id = id;
+    public Representation(Show show, LocalDateTime when, Location location) {
+
         this.show = show;
         this.when = when;
         this.location = location;
     }
 
-    public Long getId() {
+    public Long getId() {       // non ho capito il xk non lha messo nel constructeur
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Show getShow() {
         return show;
@@ -68,9 +65,12 @@ public class Representation {
         this.location = location;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Representation [id=" + id + ", show=" + show + ", when=" + when
                 + ", location=" + location + "]";
     }
+
+     */
+
 }

@@ -27,7 +27,7 @@ public class Show {
      * Lieu de création du spectacle
      */
     @ManyToOne
-    @JoinColumn(name="location_id", nullable=false)
+    @JoinColumn(name="location_id", nullable=true) // il problema era qua
     private Location location;  //in realta nella table era location_id,siccome è l'id del location scrivero cosi
     private boolean bookable;
     private double price;
@@ -184,7 +184,9 @@ public class Show {
         return "Show [id=" + id + ", slug=" + slug + ", title=" + title
                 + ", description=" + description + ", posterUrl=" + posterUrl + ", location="
                 + location + ", bookable=" + bookable + ", price=" + price
-                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-                + ", representations=" + representations.size() + "]";
+                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt+
+                 ", representations=" + representations.size() + "]";
     }
+
+
 }
