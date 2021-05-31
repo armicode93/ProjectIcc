@@ -28,6 +28,8 @@ public class Type {
             inverseJoinColumns= @JoinColumn(name = "artist_id")) //name deuxieme column de jointure
     private List<Artist> artists= new ArrayList<>();
 
+
+
     public List<Artist> getArtists() {
         return artists;
     }

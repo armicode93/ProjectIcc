@@ -11,7 +11,7 @@ import java.util.List;
 @Data //no setter no getter ,with this annotation is inside
 @Entity
 @Table(name="artists")
-@AllArgsConstructor
+
 
 public class Artist {
     @Id //clef primaire, identifiant unique
@@ -25,6 +25,11 @@ public class Artist {
     private List<Type> types = new ArrayList<>();
 
     protected Artist() {}
+
+    public Artist(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
 
 
     public List<Type> getTypes()

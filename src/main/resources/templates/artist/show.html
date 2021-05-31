@@ -12,9 +12,15 @@
 
         <h1 th:text="${artist.firstname} +' '+ ${artist.lastname}">Bob Sull</h1>
 
+
+        <h2>Liste des types</h2>
+        <ul th:unless="${#lists.isEmpty(artist.types)}">
+            <li th:each="type : ${artist.types}" th:text="${type.type}">Type</li>
+        </ul>
+        <!-- affichage des types (fonction) de l'artist-->
         <!-- <h1 th:text="|${artist.firstname} ${artist.lastname}|">Bob Sull</h1> # -->
         <!-- // la barre vertical cest une concatenation,soit on fais avec le + soit avec la barre     -->
-
+        <nav><a th:href="@{/artists}">Retour à l'index</a></nav>
     </div>
 </div>
 </body>
