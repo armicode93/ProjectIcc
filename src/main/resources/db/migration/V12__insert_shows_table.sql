@@ -1,4 +1,4 @@
-INSERT INTO shows (id,slug,title,description,poster_url,bookable,price,
+INSERT INTO `shows` (id,slug,title,description,poster_url,bookable,price,
                    created_at,updated_at,location_id) VALUES
 (1, 'ayiti', 'Ayiti', 'Un homme est bloqué à l’aéroport.\n Questionné par les douaniers, il doit alors
 justifier son identité, et surtout prouver qu\'il est haïtien – qu\'est-ce qu\'être haïtien ?', 'ayiti.jpg', 1,
