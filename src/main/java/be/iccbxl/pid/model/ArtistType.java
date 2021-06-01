@@ -24,6 +24,7 @@ public class ArtistType {
     @ManyToOne
     @JoinColumn(name="type_id" , nullable=false)
     private Type type;
+    // ci permettera che a partire da uno spettacolo show, di rintracciare l'artista e il tipo
 
     @ManyToMany(targetEntity = Show.class)
     @JoinTable(

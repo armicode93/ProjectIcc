@@ -32,7 +32,7 @@ public class Show {
     private boolean bookable;
     private double price;
 
-
+ //  prendere gli artist che collaborano in un determinato spettacolo
     @ManyToMany(mappedBy = "shows")
     private List<ArtistType> artistTypes = new ArrayList<>();
     /**
