@@ -15,9 +15,9 @@
 
                 <!--nombre totale de la liste de representations de un spectacle,quante respresentation ci sono-->
 
-                <span th:if="${#lists.size(show.representations)==1}">- 1représentation</span>
+                <span th:if="${#lists.size(show.representations)==1}">- 1représentation </span>
                 <span th:if="${#lists.size(show.representations)>1}"
-                      th:text="|- ${#lists.size(show.representations)} représentations|">- 2représentations</span>
+                      th:text="|- ${#lists.size(show.representations)} représentations|">- 2représentations </span>
                 <em th:if="${#lists.size(show.representations)==0}">aucune représentation</em>
 
 
