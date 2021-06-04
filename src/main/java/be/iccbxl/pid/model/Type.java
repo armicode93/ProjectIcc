@@ -1,15 +1,14 @@
 package be.iccbxl.pid.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name="types")
 @NoArgsConstructor
@@ -21,6 +20,7 @@ public class Type {
     private Long id;
     private String type;
 
+    //table de jointure
     @ManyToMany
     @JoinTable(
             name="artist_type", //name table de jointure
@@ -47,6 +47,11 @@ public class Type {
             artist.getTypes().remove(this);
         }
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Type [id=" + id + ", type=" + type + "]";
     }
 }
 

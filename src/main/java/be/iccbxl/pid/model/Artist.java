@@ -1,14 +1,13 @@
 package be.iccbxl.pid.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data //no setter no getter ,with this annotation is inside
+@Getter //no setter no getter ,with this annotation is inside
+@Setter
 @Entity
 @Table(name="artists")
 
@@ -54,9 +53,6 @@ public class Artist {
         return this;
 
     }
-
-
-
 
 
 }

@@ -2,6 +2,8 @@ package be.iccbxl.pid.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +19,13 @@ public class Representation {
     @ManyToOne
     @JoinColumn(name="show_id", nullable = false)
     private Show show;
+
+    @ManyToMany
+    @JoinTable(
+            name="representation_user",
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns= @JoinColumn(name = "representation_id"))
+    private List<User> users = new ArrayList<>();
 
     //Date creation representation
 

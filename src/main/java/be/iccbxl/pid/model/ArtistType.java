@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name="artist_type")
 
-public class ArtistType {
+public class ArtistType  {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -40,6 +40,7 @@ public class ArtistType {
         this.type = type;
         this.shows = shows;
     }
+
 
     public Long getId() {
         return id;
