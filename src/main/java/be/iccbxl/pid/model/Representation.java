@@ -74,12 +74,12 @@ public class Representation {
         this.location = location;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return "Representation [id=" + id + ", show=" + show + ", when=" + when
                 + ", location=" + location + "]";
     }
 
-     */
+
 
 }

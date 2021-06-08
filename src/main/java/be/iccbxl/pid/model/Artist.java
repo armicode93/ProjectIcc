@@ -1,5 +1,6 @@
 package be.iccbxl.pid.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +17,9 @@ public class Artist {
     @Id //clef primaire, identifiant unique
     @GeneratedValue(strategy=GenerationType.AUTO) //auto generate
     //ou GenerationType.IDENTITY
+
     private Long id;
+
     private String firstname;
     private String lastname;
 

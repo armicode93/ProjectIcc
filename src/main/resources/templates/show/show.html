@@ -42,21 +42,21 @@
             <p th:unless="${show.bookable}">Non réservable</p>
 
            <!-- quand representation > 1 afficher date et heure -->
-            <!--<h2>Liste des représentations</h2>
+            <h2>Liste des représentations</h2>
             <ul th:if="${#lists.size(show.representations)>=1}">
                 <li th:each="representation : ${show.representations}"
-                    th:text="${#temporals.format(representation.when,'dd-MM-yyyyHH:mm')}">12-10-2012 13:30</li>
+                    th:text="${#temporals.format(representation.when,'dd-MM-yyyy HH:mm')}">12-10-2012 13:30</li>
             </ul>
             <p th:if="${#lists.size(show.representations)==0}">Aucune représentation</p>
 
-            affichages des artistes qui collaborent au spectacle(table artist_type_show
-             no capito
+            <!--affichages des artistes qui collaborent au spectacle(table artist_type_show
+             no capito -->
             <p><strong>Auteur:</strong>
                 <span th:each="auteur,iter : ${collaborateurs['auteur']}"
                       th:text="${auteur.firstname}+' '+${auteur.lastname}
                   + (${iter.count}==${iter.size}-1 ? ' et ':(${iter.last}?'':', '))">Firstname Lastname</span>
             </p>
-             iter serve per contare
+             <!--iter serve per contare , mettere un et o virugule entre les artiste-->
 
             <p><strong>Metteur en scène:</strong>
                 <span th:each="scenographe,iter : ${collaborateurs['scénographe']}"
@@ -69,14 +69,8 @@
                       th:text="${comedien.firstname}+' '+${comedien.lastname}
      + (${iter.count}==${iter.size}-1 ? ' et ':(${iter.last}?'':', '))">Firstname Lastname</span>
             </p>
-            -->
-            <h2>Liste des artistes</h2>
-            <ul th:if="${#lists.size(show.artistTypes)>=1}">
-                <li th:each="collaborateur : ${show.artistTypes}"
-                    th:text="|${collaborateur.artist.firstname} ${collaborateur.artist.lastname } (${collaborateur.type.type})|">
-                    Firstname Lastname (type)
-                </li>
-            </ul>
+
+
 
             <nav><a th:href="@{/shows}">Retour à l'index</a></nav>
 

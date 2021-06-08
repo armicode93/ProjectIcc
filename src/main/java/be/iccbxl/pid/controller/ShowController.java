@@ -1,9 +1,6 @@
 package be.iccbxl.pid.controller;
 
-import be.iccbxl.pid.model.ArtistType;
-import be.iccbxl.pid.model.Show;
-import be.iccbxl.pid.model.ShowService;
-import be.iccbxl.pid.model.Type;
+import be.iccbxl.pid.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,21 +38,20 @@ public class ShowController {
         //Récupérer les artistes du spectacle et les grouper par type
         //exemple autore chi è, metteur en scene chi ecc ecc
         //treeMaps serve per creare una mappa ordinata,cioe nomi in ordine
-        /* Map<Type, ArrayList<ArtistType>> collaborateurs = new TreeMap<>();
-        for (ArtistType at : show.getArtistTypes()) {
+          //Récupérer les artistes du spectacle et les grouper par type
+        Map<String,ArrayList<Artist>> collaborateurs = new TreeMap<>();
 
-            if (collaborateurs.get(at.getType()) == null ) {
-
-
-                collaborateurs.put(at.getType(), new ArrayList<>());
-
+        for(ArtistType at : show.getArtistTypes()) {
+        //qui avevo un problema di cast,mi dice type cannot cast, allora non so il xk a aggiunto un'altra volta getType()
+            if(collaborateurs.get(at.getType().getType()) == null)  {
+            	collaborateurs.put(at.getType().getType(), new ArrayList<>());
             }
 
-                collaborateurs.get(at.getType());
+            collaborateurs.get(at.getType().getType()).add(at.getArtist());
         }
 
 
-                model.addAttribute("collaborateurs", collaborateurs); */
+                model.addAttribute("collaborateurs", collaborateurs);
 
                 model.addAttribute("show", show);
                 model.addAttribute("title", "Fiche d'un show");

@@ -1,6 +1,7 @@
 package be.iccbxl.pid.model;
 
 import org.springframework.data.repository.CrudRepository;    //definire le methode d acces a la BD
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
