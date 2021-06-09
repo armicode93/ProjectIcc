@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 
 @Controller
 public class ArtistController {
@@ -61,7 +63,7 @@ public class ArtistController {
         return "artist/edit";
     } //ok
     @PostMapping("/artists/edit/{id}")
-    public String artistSubmit( @ModelAttribute("artist")  Artist artist, BindingResult result, ModelMap model)
+    public String artistSubmit(@Valid Artist artist, BindingResult result, ModelMap model)
     {
         if (result.hasErrors()) {
             return "artist/edit";

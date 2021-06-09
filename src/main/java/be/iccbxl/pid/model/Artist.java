@@ -1,8 +1,8 @@
 package be.iccbxl.pid.model;
 
-import com.sun.istack.NotNull;
-import lombok.*;
 
+import lombok.*;
+import javax.validation.constraints.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,15 @@ public class Artist {
     @GeneratedValue(strategy=GenerationType.AUTO) //auto generate
     //ou GenerationType.IDENTITY
 
+
     private Long id;
 
+    @NotEmpty(message = "{NotEmpty.Artist.Firstname}")
+    @Size(min=3, max=60 , message = "{Size.Artist.Firstname}")
     private String firstname;
+
+    @NotEmpty(message = "{NotEmpty.Artist.Lastname}")
+    @Size(min=3, max=60, message = "{Size.Artist.Firstname}")
     private String lastname;
 
     @ManyToMany(mappedBy="artists")

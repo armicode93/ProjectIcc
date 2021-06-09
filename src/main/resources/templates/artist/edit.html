@@ -14,14 +14,14 @@
        <!-- <h1 th:text="|${artist.firstname} ${artist.lastname}|">ARMEN sulu</h1> -->
            <div class="form-group">
                 <strong> <label for="firstname">Prénom</label></strong>
-                     <input class="form-control" type="text"  th:field="*{firstname}" id="firstname " placeholder="firstname" >
+                     <input class="form-control" type="text"  th:field="*{firstname}" id="firstname " placeholder="Firstname" >
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
             </div>
 
             <div class="form-group">
                     <strong><label for="lastname">Name</label></strong>
                     <!-- th field permette di recuperare il nome selezionato -->
-                    <input class="form-control" type="text" th:field="*{lastname}" id="lastname" placeholder="lastname" >
+                    <input class="form-control" type="text" th:field="*{lastname}" id="lastname" placeholder="Lastname" >
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
             </div>
             <br/>
