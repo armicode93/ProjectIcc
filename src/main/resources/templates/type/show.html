@@ -5,7 +5,7 @@
       xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
       layout:decorate="~{layouts/main}">
 <head>
-    <title>Fiche d'une localité</title>
+    <title>Fiche d'un type </title>
 </head>
 <body>
 <div class="container">
@@ -16,7 +16,9 @@
         <ul th:unless="${#lists.isEmpty(type.artists)}">
             <li th:each="artist : ${type.artists}"
                 th:text="|${artist.firstname} ${artist.lastname}|">Firstname Lastname</li>
-        </ul>
+        </ul><br/><br/>
+
+        <nav><a th:href="@{'/types/edit/'+ ${type.id}}">Edit</a></nav>
         <nav><a th:href="@{/types}">Retour à l'index</a></nav>
     </div>
 </div>

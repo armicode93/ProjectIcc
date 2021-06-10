@@ -8,6 +8,7 @@
     <title>Fiche d'un artiste</title>
 </head>
 <body>
+
 <div class="container">
     <div layout:fragment="content">
         <form action="# " th:action="@{'/artists/edit/'+ ${artist.id}}" th:object="${artist}" method="post"> <!-- th:object ci serve per fare collegamento con il model -->

@@ -4,6 +4,8 @@ package be.iccbxl.pid.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotEmpty(message = "{NotEmpty.Type.Type}")
+    @Size(min=3, max=60, message ="{Size.Type.Type}")
     private String type;
 
     //table de jointure
@@ -51,7 +56,10 @@ public class Type {
 
     @Override
     public String toString() {
-        return "Type [id=" + id + ", type=" + type + "]";
+        return "Type{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
 
