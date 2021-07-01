@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html   lang="fr"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layouts/main}">
+<head>
+    <title>Fiche d'un artiste</title>
+</head>
+<body>
+
+<div class="container">
+    <div layout:fragment="content">
+        <form action="# " th:action="@{'/roles/add/'+${role.id}}" th:object="${role}" method="post" >
+
+            <div class="form-group">
+            <strong><label for="roleName">New Role</label></strong>
+                <input class="form-control" type="text" th:field="*{roleName}" id="roleName" placeholder="RoleName" >
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}"></div>
+            </div>
+            <br/>
+
+            <input type="submit" value="Submit" /><br/><br/>
+
+            <nav><a th:href="@{/roles}">Annuler</a></nav>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

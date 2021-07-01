@@ -39,6 +39,9 @@ public class TypeService {
 
         typeRepository.deleteById(indice);
     }
-
+   //
+    public Type save(Type type) {
+        return typeRepository.save(type);
+    }
 
 }

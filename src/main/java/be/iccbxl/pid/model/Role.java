@@ -1,16 +1,18 @@
 package be.iccbxl.pid.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name="roles")
-@NoArgsConstructor
+
+@ToString
 
 
 public class Role {
@@ -19,7 +21,11 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private Long id;
-    private String role;
+
+    @NotEmpty(message = "{NotEmpty.Role.Role}")
+    @Size(min=2, max=60, message ="{Size.Role.Role}")
+    @Column(name = "role")
+    private String roleName;
 
     @ManyToMany
     @JoinTable(
@@ -28,13 +34,36 @@ public class Role {
             inverseJoinColumns= @JoinColumn(name = "role_id")) //name deuxieme column de jointure
     private List<User> users= new ArrayList<>();
 
+    protected Role(){}
 
     public Role(String role) {
-        super();
-        this.role = role;
+        this.roleName = role;
     }
 
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String role) {
+        this.roleName = role;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }
 

@@ -14,8 +14,11 @@
         <h1 th:text="${title}">Liste des role</h1>
 
         <ul th:unless="${#lists.isEmpty(roles)}">
-            <li th:each="role :${roles}" th:text="${role.role}">Roles</li>
+            <li th:each="role :${roles}" th:text="${role.roleName}">Roles</li>
         </ul>
+
+        <!--<nav> <a th:href="@{'/roles/add/'+${role.id}}">Add New  Role</a></nav>-->
+
     </div>
 </div>
 </body>

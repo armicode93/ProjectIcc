@@ -24,10 +24,9 @@ public class RoleService {
 
     public Role getRole(String id)
     {
-        Long indice = (long) Integer.parseInt(id);
-        Optional<Role> role = roleRepository.findById(indice);
+        int indice = Integer.parseInt(id);
 
-        return role.isPresent() ? role.get() : null;
+        return roleRepository.findById(indice);
 
     }
     public void add(Role role)

@@ -10,8 +10,14 @@
 <body>
 <div class="container">
     <div layout:fragment="content">
-        <h1 th:text="${#strings.capitalize(role.role)}">Admin</h1>
+        <h1 th:text="${#strings.capitalize(role.roleName)}">Admin</h1>
+
+        <nav> <a th:href="@{'/roles/add/'+${role.id}}">Edit Role</a></nav>
+        <nav><a th:href="@{/roles}">Annuler</a></nav>
+
     </div>
+
 </div>
+
 </body>
 </html>

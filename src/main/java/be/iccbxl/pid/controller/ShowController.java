@@ -39,19 +39,18 @@ public class ShowController {
         //exemple autore chi è, metteur en scene chi ecc ecc
         //treeMaps serve per creare una mappa ordinata,cioe nomi in ordine
           //Récupérer les artistes du spectacle et les grouper par type
-        Map<String,ArrayList<Artist>> collaborateurs = new TreeMap<>();
+        Map<Type,ArrayList<ArtistType>> collaborateurs = new TreeMap<>();
 
         for(ArtistType at : show.getArtistTypes()) {
-        //qui avevo un problema di cast,mi dice type cannot cast, allora non so il xk a aggiunto un'altra volta getType()
-            if(collaborateurs.get(at.getType().getType()) == null)  {
-            	collaborateurs.put(at.getType().getType(), new ArrayList<>());
-            }
-
-            collaborateurs.get(at.getType().getType()).add(at.getArtist());
+        if(collaborateurs.get(at.getType()) == null) {
+            collaborateurs.put(at.getType(), new ArrayList<>());
         }
+        collaborateurs.get(at.getType()).add(at);
+    }
+        model.addAttribute("collaborateurs", collaborateurs);
 
 
-                model.addAttribute("collaborateurs", collaborateurs);
+
 
                 model.addAttribute("show", show);
                 model.addAttribute("title", "Fiche d'un show");

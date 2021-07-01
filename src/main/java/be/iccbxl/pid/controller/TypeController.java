@@ -43,31 +43,18 @@ public class TypeController {
         return "type/show";
     }
 
-    @GetMapping("/types/edit/{id}")
 
-    public String typeForm(Model model, @PathVariable("id") String id) {
-        Type type = service.get(id);
+    @PostMapping("/types/edit")
 
-        model.addAttribute("type",type);
-        model.addAttribute("title","Fiche d'un type");
+    public String typeSubmit(Model model, Type type) {
 
-        return "type/edit";
+        service.add(type);
+        List<Type> types = service.getAllType();
 
-    }
-
-    @PostMapping("/types/edit/{id}")
-
-    public String typeSubmit(@Valid String id , Type type, BindingResult result, ModelMap model) {
-
-        if (result.hasErrors()) {
-            return "type/edit";
-        }
-
-        service.update(id,type);
+        model.addAttribute("types", types);
+        model.addAttribute("title", "Liste des types");
 
 
-
-        return "type/show";
-
+        return "type/index";
     }
 }
