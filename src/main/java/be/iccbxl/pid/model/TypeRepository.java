@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface TypeRepository extends CrudRepository <Type, Long> {
 
-    Optional<Type> findById(Long id);
-    Type findByType(String type);
+    Optional<Type> findById(long id);
+    Type findByTypeName(String type);
 }

@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <div layout:fragment="content">
-        <h1 th:text="${#strings.capitalize(type.type)}">Acteur</h1>
+        <h1 th:text="${#strings.capitalize(type.typeName)}">Acteur</h1>
 
         <h2>Liste des artistes</h2>
         <ul th:unless="${#lists.isEmpty(type.artists)}">

@@ -25,10 +25,13 @@
             <tr scope="row" th:each="artist : ${artists}">
                 <td th:text="${artist.firstname}">Bob</td>
                 <td th:text="${artist.lastname}">Sull</td>
-                <a th:href="@{/artists/{id}(id=${artist.id})}">View</a>
+                <td><a th:href="@{'/artists/' +${artist.id}}">View</a></td>
+
             </tr>
+
             </tbody>
         </table>
+        <a th:href="@{'/artists/add'}">Add New Artist</a>
     </div>
 </div>
 </body>

@@ -76,4 +76,32 @@ public class ArtistController {
         return "artist/show";
 
     }
+
+    @GetMapping("/artists/add")
+
+        public String artistsFormAdd(Model model)
+        {
+            List<Artist> artist = service.getAllArtists();
+
+            model.addAttribute("artist",artist);
+            model.addAttribute("title", "Fiche d'un artiste");
+
+            return "artist/add";
+        }
+
+        @PostMapping("/artists/add")
+        public String artistSubmitAdd(@Valid Artist artist, BindingResult result, ModelMap model)
+        {
+            if (result.hasErrors()) {
+                return "artist/add";
+            }
+
+            service.addArtist(artist);
+
+
+
+            return "artist/index";
+
+        }
+
 }

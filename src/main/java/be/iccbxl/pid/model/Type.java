@@ -9,21 +9,23 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name="types")
 @NoArgsConstructor
 @AllArgsConstructor
+
 
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     @NotEmpty(message = "{NotEmpty.Type.Type}")
     @Size(min=3, max=60, message ="{Size.Type.Type}")
-    private String type;
+    @Column(name="type")
+    private String typeName;
 
     //table de jointure
     @ManyToMany
@@ -33,7 +35,9 @@ public class Type {
             inverseJoinColumns= @JoinColumn(name = "artist_id")) //name deuxieme column de jointure
     private List<Artist> artists= new ArrayList<>();
 
-
+    public Type(String type) {
+        this.typeName = type;
+    }
 
     public List<Artist> getArtists() {
         return artists;
@@ -53,12 +57,19 @@ public class Type {
         }
         return this;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String type) {
+        this.typeName = type;
+    }
     @Override
     public String toString() {
-        return "Type{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                '}';
+        return "Type [id=" + id + ", type=" + typeName + "]";
     }
 }

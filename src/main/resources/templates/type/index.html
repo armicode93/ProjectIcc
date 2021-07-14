@@ -12,7 +12,7 @@
 
         <ul th:unless="${#lists.isEmpty(types)}">
             <li th:each="type : ${types}">
-                <span th:text="${type.type}">Acteur</span>
+                <span th:text="${type.typeName}">Acteur</span>
                 <a th:href="@{/types/{id}(id=${type.id})}">View</a>
             </li>
         </ul>

@@ -1,6 +1,7 @@
 package be.iccbxl.pid.controller;
 
 import be.iccbxl.pid.model.Artist;
+import be.iccbxl.pid.model.Role;
 import be.iccbxl.pid.model.Type;
 
 import be.iccbxl.pid.model.TypeService;
@@ -44,17 +45,32 @@ public class TypeController {
     }
 
 
-    @PostMapping("/types/edit")
+    @GetMapping("/types/edit/{id}")
 
-    public String typeSubmit(Model model, Type type) {
+    public String typeForm(Model model, @PathVariable("id") String id) {
 
-        service.add(type);
-        List<Type> types = service.getAllType();
 
-        model.addAttribute("types", types);
+        Type type = service.get(id);
+
+        model.addAttribute("type", type);
         model.addAttribute("title", "Liste des types");
 
 
-        return "type/index";
+        return "type/editType";
+    }
+
+    @PostMapping("/types/edit/{id}")
+    public String typeSubmit(@Valid Type type, BindingResult result, ModelMap model) {
+
+        if (result.hasErrors()) {
+            return "type/editType";
+        }
+
+        service.add(type);
+
+
+
+        return "type/show";
+
     }
 }
