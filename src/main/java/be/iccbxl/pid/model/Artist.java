@@ -1,17 +1,18 @@
 package be.iccbxl.pid.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import javax.validation.constraints.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter //no setter no getter ,with this annotation is inside
+@Getter
 @Setter
 @Entity
 @Table(name="artists")
-
+@ToString
 
 public class Artist {
     @Id //clef primaire, identifiant unique
@@ -21,18 +22,20 @@ public class Artist {
 
     private Long id;
 
-    @NotEmpty(message = "{NotEmpty.Artist.Firstname}")
-    @Size(min=3, max=60 , message = "{Size.Artist.Firstname}")
+
+    @NotEmpty(message = "Firstname value is required and can t be empty")
+    @Size(min=3, max=60 , message = "Firstname should have at least 2 characters and max 60 characters")
     private String firstname;
 
-    @NotEmpty(message = "{NotEmpty.Artist.Lastname}")
-    @Size(min=3, max=60, message = "{Size.Artist.Firstname}")
+
+    @NotEmpty(message = "Lastname value is required and can t be empty")
+    @Size(min=3, max=60, message = "Lastname should have at least 2 characters and max 60 characters")
     private String lastname;
 
     @ManyToMany(mappedBy="artists")
     private List<Type> types = new ArrayList<>();
 
-    protected Artist() {}
+    public Artist() {}
 
     public Artist(String firstname, String lastname) {
         this.firstname = firstname;

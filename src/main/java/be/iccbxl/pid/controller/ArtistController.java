@@ -1,9 +1,7 @@
 package be.iccbxl.pid.controller;
 import java.util.List;
 
-import be.iccbxl.pid.model.ArtistService;
-import be.iccbxl.pid.model.Artist;
-import be.iccbxl.pid.model.ArtistRepository;
+import be.iccbxl.pid.model.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -23,12 +21,17 @@ import javax.validation.Valid;
 public class ArtistController {
     // permet d initialiser automatiquement l'attribut service par injection de depandence
     @Autowired
-    ArtistService service; //permet utiliser methodes metiers qui manipulent donnee
+    ArtistService artistService; //permet utiliser methodes metiers qui manipulent donnee
+
+    @Autowired
+    private TypeRepository typeRepository;
+
+
 
     @GetMapping("/artists")
 
     public String index(Model model)  {
-        List<Artist> artists = service.getAllArtists();
+        List<Artist> artists = artistService.getAllArtists();
 
         model.addAttribute("artists",artists);
         model.addAttribute("title","Liste des artistes");
@@ -40,7 +43,7 @@ public class ArtistController {
 
     @GetMapping("/artists/{id}") //methode show pour recuperer un artiste avec son id e affiche dans show.html
     public String show(Model model, @PathVariable("id") String id){ // path serve per far corrispondere id del url con quello della methode show
-        Artist artist = service.getArtist(id);
+        Artist artist = artistService.getArtist(id);
         //get artist est utilie pour recuperer l'artiste dont l-id correspond,
         //nous l-ajoutons au modele avant de renvoyer le template show.html
         model.addAttribute("artist",artist);
@@ -51,7 +54,7 @@ public class ArtistController {
     @GetMapping("/artists/edit/{id}")
     public String artistForm(Model model, @PathVariable("id") String id)
     {
-        Artist artist = service.getArtist(id);
+        Artist artist = artistService.getArtist(id);
         //get artist est utilie pour recuperer l'artiste dont l-id correspond,
         //nous l-ajoutons au modele avant de renvoyer le template show.html
         model.addAttribute("artist",artist);
@@ -69,7 +72,7 @@ public class ArtistController {
             return "artist/edit";
         }
 
-        service.addArtist(artist);
+        artistService.addArtist(artist);
 
 
 
@@ -81,27 +84,27 @@ public class ArtistController {
 
         public String artistsFormAdd(Model model)
         {
-            List<Artist> artist = service.getAllArtists();
-
-            model.addAttribute("artist",artist);
-            model.addAttribute("title", "Fiche d'un artiste");
-
+            model.addAttribute(new Artist());
             return "artist/add";
         }
 
-        @PostMapping("/artists/add")
-        public String artistSubmitAdd(@Valid Artist artist, BindingResult result, ModelMap model)
+        @PostMapping("/artists/add") //no funzionante
+        public String artistSubmitAdd(@Valid Artist artist, BindingResult result, ModelMap model) //model attribute serve per recuperare gli input dei campi riempiti
         {
             if (result.hasErrors()) {
                 return "artist/add";
             }
 
-            service.addArtist(artist);
 
+            /*artist.setFirstname(artist.getFirstname());
+            artist.setLastname(artist.getLastname()); */
 
-
+            model.addAttribute(new Artist());
+            artistService.addArtist(artist);
+           // model.addAttribute("artist", artistService.getAllArtists());
             return "artist/index";
 
         }
+
 
 }
