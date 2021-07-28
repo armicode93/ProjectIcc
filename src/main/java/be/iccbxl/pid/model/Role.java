@@ -22,8 +22,8 @@ public class Role {
 
     private Long id;
 
-    @NotEmpty(message = "{NotEmpty.Role.Role}")
-    @Size(min=2, max=60, message ="{Size.Role.Role}")
+    @NotEmpty(message = "Role value is required and can t be empty")
+    @Size(min=2, max=60, message ="Role should have at least 2 characters and max 60 characters")
     @Column(name = "role")
     private String roleName;
 

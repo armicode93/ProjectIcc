@@ -22,8 +22,8 @@ public class Type {
     private Long id;
 
 
-    @NotEmpty(message = "{NotEmpty.Type.Type}")
-    @Size(min=3, max=60, message ="{Size.Type.Type}")
+    @NotEmpty(message = "Type name value is required and can t be empty")
+    @Size(min=3, max=60, message ="Type name should have at least 2 characters and max 60 characters")
     @Column(name="type")
     private String typeName;
 

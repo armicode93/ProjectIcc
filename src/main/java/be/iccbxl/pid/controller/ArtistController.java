@@ -66,7 +66,7 @@ public class ArtistController {
         return "artist/edit";
     } //ok
     @PostMapping("/artists/edit/{id}")
-    public String artistSubmit(@Valid Artist artist, BindingResult result, ModelMap model)
+    public String artistSubmit(@Valid @ModelAttribute("artist") Artist artist, BindingResult result, ModelMap model)
     {
         if (result.hasErrors()) {
             return "artist/edit";
@@ -88,8 +88,8 @@ public class ArtistController {
             return "artist/add";
         }
 
-        @PostMapping("/artists/add") //no funzionante
-        public String artistSubmitAdd(@Valid Artist artist, BindingResult result, ModelMap model) //model attribute serve per recuperare gli input dei campi riempiti
+        @PostMapping("/artists/add") //no funzionante errore
+        public String artistSubmitAdd(@Valid @ModelAttribute("artist") Artist artist, BindingResult result, ModelMap model) //model attribute serve per recuperare gli input dei campi riempiti
         {
             if (result.hasErrors()) {
                 return "artist/add";

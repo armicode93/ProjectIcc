@@ -19,17 +19,17 @@ public class Artist {
     @GeneratedValue(strategy=GenerationType.AUTO) //auto generate
     //ou GenerationType.IDENTITY
 
-
+    @NotNull(message = "Id cannot be null")
     private Long id;
 
 
     @NotEmpty(message = "Firstname value is required and can t be empty")
-    @Size(min=3, max=60 , message = "Firstname should have at least 2 characters and max 60 characters")
+    @Size(min = 2, max = 60 , message = "Firstname should have at least 2 characters and max 60 characters")
     private String firstname;
 
 
     @NotEmpty(message = "Lastname value is required and can t be empty")
-    @Size(min=3, max=60, message = "Lastname should have at least 2 characters and max 60 characters")
+    @Size(min = 2, max = 60, message = "Lastname should have at least 2 characters and max 60 characters")
     private String lastname;
 
     @ManyToMany(mappedBy="artists")

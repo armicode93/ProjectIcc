@@ -6,6 +6,14 @@
         layout:decorate="~{layouts/main}">
 <head>
     <title>Fiche d'un artiste</title>
+
+    <!--colore errore messaggi-->
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -16,14 +24,14 @@
            <div class="form-group">
                 <strong> <label for="firstname">Prénom</label></strong>
                      <input class="form-control" type="text" th:field="*{firstname}"  id="firstname">
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
+               <div class="alert alert-warning" th:if="${#fields.hasErrors('firstname')}"  th:errors="*{firstname}" th:errorclass="error"></div>
             </div>
 
             <div class="form-group">
                     <strong><label for="lastname">Name</label></strong>
                     <!-- th field permette di recuperare il nome selezionato -->
                     <input class="form-control" type="text" th:field="*{lastname}"  id="lastname"  >
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" th:errorclass="error"></div>
             </div>
             <br/>
 
