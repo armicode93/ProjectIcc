@@ -102,7 +102,7 @@ public class ArtistController {
             model.addAttribute(new Artist());
             artistService.addArtist(artist);
            // model.addAttribute("artist", artistService.getAllArtists());
-            return "artist/index";
+            return "redirect:/artists"; //redirection apres la sauvgarde
 
         }
 

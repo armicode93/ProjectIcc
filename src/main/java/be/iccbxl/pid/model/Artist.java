@@ -16,10 +16,10 @@ import java.util.List;
 
 public class Artist {
     @Id //clef primaire, identifiant unique
-    @GeneratedValue(strategy=GenerationType.AUTO) //auto generate
+    @GeneratedValue(strategy=GenerationType.IDENTITY) //auto generate
     //ou GenerationType.IDENTITY
 
-    @NotNull(message = "Id cannot be null")
+
     private Long id;
 
 
