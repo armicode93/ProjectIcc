@@ -21,7 +21,7 @@ public class TypeService {
     }
 
     public Type get(String id) {
-        Long indice = (long) Integer.parseInt(id);
+        int indice =  Integer.parseInt(id);
         Optional<Type> type = typeRepository.findById(indice);
 
         return type.isPresent() ? type.get() : null;
@@ -30,7 +30,7 @@ public class TypeService {
     public void add(Type type){
         typeRepository.save(type);
     }
-    public void update(String id, Type type)  {
+    public void update(Long id, Type type)  {
         typeRepository.save(type);
     }
 

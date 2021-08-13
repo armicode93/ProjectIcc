@@ -21,17 +21,30 @@ public class LocalityService {
     }
 
     public Locality get(String id){
-        Long indice = (long) Integer.parseInt(id);
-        Optional<Locality> locality = localityRepository.findById(indice);
+       /* Long indice = (long) Integer.parseInt(id);
+        Optional <Locality> locality = LocalityRepository.findById(indice);
 
         return locality.isPresent() ? locality.get() : null;
+
+        */
+
+
+
+        int indice = Integer.parseInt(id);
+
+        return localityRepository.findById(indice);
+
+
+
+
+
     }
 
     public void add(Locality locality){
         localityRepository.save(locality);
     }
 
-    public void update(String id, Locality locality)
+    public void update(Long id, Locality locality) //no string perche id e un long
     {
         localityRepository.save(locality);
     }

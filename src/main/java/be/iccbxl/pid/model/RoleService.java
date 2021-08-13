@@ -38,9 +38,9 @@ public class RoleService {
         roleRepository.save(role);
     }
 
-    public void delete(String id)
+    public void delete(Long id)
     {
-        Long indice = (long) Integer.parseInt(id);
-        roleRepository.deleteById(indice);
+
+        roleRepository.deleteById(id);
     }
 }

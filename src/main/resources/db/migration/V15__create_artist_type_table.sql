@@ -16,7 +16,7 @@ ALTER TABLE `artist_type`
 --
 ALTER TABLE `artist_type`
     ADD CONSTRAINT `artist_type_artist_id_ 3060D1B6B7970CF8_fk_artists_id` FOREIGN KEY
-        (`artist_id`) REFERENCES `artists` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+        (`artist_id`) REFERENCES `artists` (`id`) ON DELETE CASCADE;
 ALTER TABLE `artist_type`
     ADD CONSTRAINT `artist_type_type_id_ 3060D1B6C54C8C93 _fk_artists_id` FOREIGN KEY
-        (`type_id`) REFERENCES `types` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+        (`type_id`) REFERENCES `types` (`id`) ON DELETE CASCADE;

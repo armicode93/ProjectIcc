@@ -5,14 +5,11 @@ import be.iccbxl.pid.model.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
@@ -66,9 +63,28 @@ public class ArtistController {
         return "artist/edit";
     } //ok
     @PostMapping("/artists/edit/{id}")
-    public String artistSubmit(@Valid @ModelAttribute("artist") Artist artist, BindingResult result, ModelMap model)
+    public String artistSubmit(@Valid @ModelAttribute("artist") Artist artist, BindingResult result,@PathVariable("id") String id, Model model)
     {
         if (result.hasErrors()) {
+            return "artist/edit";
+        }
+
+        Artist existing = artistService.getArtist(id);
+
+        if(existing==null) {
+            return "artist/index";
+        }
+
+        Long indice = (long) Integer.parseInt(id);
+
+        artist.setId(indice);
+        artistService.updateArtist(artist.getId(), artist);
+
+        model.addAttribute("artist", artist);
+
+        return "redirect:/artists/"+artist.getId();
+
+        /*if (result.hasErrors()) {
             return "artist/edit";
         }
 
@@ -77,6 +93,8 @@ public class ArtistController {
 
 
         return "artist/show";
+
+         */
 
     }
 
@@ -89,22 +107,38 @@ public class ArtistController {
         }
 
         @PostMapping("/artists/add") //no funzionante errore
-        public String artistSubmitAdd(@Valid @ModelAttribute("artist") Artist artist, BindingResult result, ModelMap model) //model attribute serve per recuperare gli input dei campi riempiti
+        public String artistSubmitAdd(@Valid @ModelAttribute("artist") Artist artist, BindingResult result,ModelMap model) //model attribute serve per recuperare gli input dei campi riempiti
         {
+
             if (result.hasErrors()) {
                 return "artist/add";
             }
 
 
-            /*artist.setFirstname(artist.getFirstname());
-            artist.setLastname(artist.getLastname()); */
+
+
+            artist.setFirstname(artist.getFirstname());
+            artist.setLastname(artist.getLastname());
 
             model.addAttribute(new Artist());
             artistService.addArtist(artist);
            // model.addAttribute("artist", artistService.getAllArtists());
             return "redirect:/artists"; //redirection apres la sauvgarde
 
+
+
+
         }
+
+    @DeleteMapping("/artists/delete/{id}")
+    public String delete(@PathVariable("id") String id, Model model) {
+        Artist existing = artistService.getArtist(id);
+        if(existing!=null) {
+            Long indice = (long) Integer.parseInt(id);
+            artistService.deleteArtist(indice);
+        }
+        return "redirect:/artists";
+    }
 
 
 }

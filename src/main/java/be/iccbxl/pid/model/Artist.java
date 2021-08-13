@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name="artists")
-@ToString
+
 
 public class Artist {
     @Id //clef primaire, identifiant unique
@@ -42,6 +42,13 @@ public class Artist {
         this.lastname = lastname;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public List<Type> getTypes()
     {
@@ -64,6 +71,10 @@ public class Artist {
         }
         return this;
 
+    }
+    @Override
+    public String toString() {
+        return firstname + " " + lastname;
     }
 
 

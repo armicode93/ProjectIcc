@@ -46,9 +46,7 @@ public class ArtistType  {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     public Artist getArtist() {
         return artist;

@@ -18,3 +18,4 @@ INSERT INTO `artist_type` (`id`, `artist_id`, `type_id`) VALUES
 (17, 13, 1),
 (18, 12, 3),
 (19, 13, 3);
+

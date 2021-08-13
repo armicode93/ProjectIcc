@@ -22,9 +22,9 @@ public class Representation {
 
     @ManyToMany
     @JoinTable(
-            name="representation_user",
-            joinColumns=@JoinColumn(name="user_id"),
-            inverseJoinColumns= @JoinColumn(name = "representation_id"))
+            name="reservations",
+            joinColumns=@JoinColumn(name="representation_id"), //seguire cosa c] scritto nel diagramme di classe
+            inverseJoinColumns= @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
 
     //Date creation representation
@@ -72,6 +72,24 @@ public class Representation {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+    public Representation addUser(User user) {
+        if(!this.users.contains(user)) {
+            this.users.add(user);
+            user.addRepresentation(this);
+        }
+        return this;
+    }
+    public Representation removeUser(User user) {
+        if(this.users.contains(user)) {
+            this.users.remove(user);
+            user.getRepresentations().remove(this);
+        }
+        return this;
     }
 
     @Override

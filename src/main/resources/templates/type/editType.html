@@ -6,19 +6,25 @@
         layout:decorate="~{layouts/main}">
 <head>
     <title>Fiche d'un type</title>
+    <style>
+    .fieldError { color: red; }
+    </style>
 </head>
 <body>
+
 
 <div class="container">
     <div layout:fragment="content">
         <form action="# " th:action="@{'/types/edit/'+${type.id}}" th:object="${type}" method="post">
 
+
             <div class="form-group">
-            <strong><label for="typeName">New Type</label></strong>
-                <input class="form-control" type="text" th:field="*{typeName}" id="typeName" placeholder="TypeName" >
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('typeName')}" th:errors="*{typeName}"></div>
-            </div>
-            <br/>
+                        <strong><label for="typeName">New Type</label></strong>
+                            <input class="form-control" type="text" th:field="*{typeName}" id="typeName" placeholder="TypeName" >
+                            <div class="alert alert-warning" th:if="${#fields.hasErrors('typeName')}" th:errors="*{typeName}"></div>
+                        </div>
+
+
 
             <input type="submit" value="Submit" /><br/><br/>
 

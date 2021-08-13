@@ -12,13 +12,13 @@ import java.util.List;
 
 @Entity
 @Table(name="types")
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 
 
 public class Type {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -26,6 +26,7 @@ public class Type {
     @Size(min=3, max=60, message ="Type name should have at least 2 characters and max 60 characters")
     @Column(name="type")
     private String typeName;
+
 
     //table de jointure
     @ManyToMany
@@ -35,9 +36,15 @@ public class Type {
             inverseJoinColumns= @JoinColumn(name = "artist_id")) //name deuxieme column de jointure
     private List<Artist> artists= new ArrayList<>();
 
-    public Type(String type) {
-        this.typeName = type;
+    public Type() {
     }
+
+
+public Type(Long id, String typeName) {
+    super();
+    this.id = id;
+    this.typeName = typeName;
+}
 
     public List<Artist> getArtists() {
         return artists;
@@ -59,6 +66,10 @@ public class Type {
     }
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTypeName() {

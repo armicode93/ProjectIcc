@@ -15,12 +15,35 @@
         <div layout:fragment="content">
             <h1 th:text="${title}">Liste des localités</h1>
 
-            <ul th:unless="${#lists.isEmpty(localities)}">
-                <li th:each="locality : ${localities}"
-                    th:text="|${locality.postalCode} ${locality.locality}|">1000 Bruxelles</li>
-            </ul>
+            <table class="table" th:unless="${#lists.isEmpty(localities)}">
+
+                <thead class="thead-dark">
+
+                <tr>
+                    <th scope="col">Postal Code</th>
+                    <th scope="col">Locality</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr scope="row" th:each="locality : ${localities}">
+                    <td th:text=" ${locality.postalCode}">1000 </td>
+                    <td th:text=" ${locality.localityName}">Bruxelles</td>
+                <td><a th:href="@{'/localities/' +${locality.id}}">View</a></td>
+
+            </tr>
+                </tbody>
+
+            </table>
+            <td><nav><a th:href="@{'/localities/add/'}">Add New Locality</a></nav></td>
+
+
+
         </div>
+
+
     </div>
+
 </div>
+
 </body>
 </html>

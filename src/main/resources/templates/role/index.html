@@ -15,10 +15,12 @@
 
         <ul th:unless="${#lists.isEmpty(roles)}">
             <li th:each="role :${roles}">
+
                 <span th:text="${role.roleName}">Roles</span>
             <a th:href="@{/roles/{id}(id=${role.id})}">View</a>
             </li>
         </ul>
+
 
         <!--<nav> <a th:href="@{'/roles/add/'+${role.id}}">Add New  Role</a></nav>-->
 

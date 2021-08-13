@@ -10,9 +10,16 @@
 <body>
 <div class="container">
     <div layout:fragment="content">
-        <h1 th:text="${#strings.capitalize(role.roleName)}">Admin</h1>
+        <h1 th:text="${#strings.capitalize(role.roleName)}">Admin</h1><br/>
 
         <nav> <a th:href="@{'/roles/add/'+${role.id}}">Edit Role</a></nav>
+        <form th:id="|deleteForm-${role.id}|"
+              th:action="@{/artists/{id}(id=${role.id})}" th:method="delete">
+            <a href="#"
+               th:onclick="|if(confirm('Confirm delete artist #${role.id}'))
+document.getElementById('deleteForm-${role.id}').submit();
+return false;|">Delete</a>
+        </form>
         <nav><a th:href="@{/roles}">Annuler</a></nav>
 
     </div>
