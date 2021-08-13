@@ -28,12 +28,12 @@
 
         </table>
         <form th:id="|deleteForm-${artist.id}|"
-              th:action="@{/artists/delete/{id}(id=${artist.id})}" th:method="delete">
-            <a href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
+              th:action="@{'/artists/delete/'+ ${artist.id}}" th:method="delete">
+            <a href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id} '))
         document.getElementById('deleteForm-${artist.id}').submit();
         return false;|">Delete</a>
 
-            <!-- unica maniera per aggiungere una conferma in html e fare un th onclick con javascript -->
+            <!-- unica maniera per aggiungere un alertin html e fare un th onclick con javascript -->
         </form>
     </div>
 </div>

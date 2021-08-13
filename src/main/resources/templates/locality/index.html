@@ -29,6 +29,17 @@
                     <td th:text=" ${locality.postalCode}">1000 </td>
                     <td th:text=" ${locality.localityName}">Bruxelles</td>
                 <td><a th:href="@{'/localities/' +${locality.id}}">View</a></td>
+                    <td>
+                        <form th:id="|deleteForm-${locality.id}|"
+                              th:action="@{'/localities/delete/'+ ${locality.id}}" th:method="delete">
+                            <!--delete form -->
+
+                            <a href="#"  th:onclick="|if(confirm('Confirm delete artist #${locality.id}'))
+                document.getElementById('deleteForm-${locality.id}').submit();
+                    return false;|">Delete</a> <!-- alert with javascript -->
+
+                        </form>
+                    </td>
 
             </tr>
                 </tbody>

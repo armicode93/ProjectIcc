@@ -22,6 +22,15 @@
         <p th:if="${#lists.isEmpty(locality.locations)}">Aucun lieu de spectacle</p>
 
         <nav><a th:href="@{'/localities/edit/' +${locality.id}}">Edit</a></nav>
+        <form th:id="|deleteForm-${locality.id}|"
+              th:action="@{'/localities/delete/'+ ${locality.id}}" th:method="delete">
+            <!--delete form -->
+
+            <a href="#"  th:onclick="|if(confirm('Confirm delete artist #${locality.id}'))
+                document.getElementById('deleteForm-${locality.id}').submit();
+                    return false;|">Delete</a> <!-- alert with javascript -->
+
+        </form>
 
 
         <nav><a th:href="@{/localities}">Back to the Main page</a></nav>

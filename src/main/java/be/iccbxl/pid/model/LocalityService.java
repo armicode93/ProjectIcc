@@ -49,12 +49,11 @@ public class LocalityService {
         localityRepository.save(locality);
     }
 
-    public void delete(String id) {
-        Long indice=(long) Integer.parseInt(id);
-
-        localityRepository.deleteById(indice);
+    public void delete(Long id) {
+        localityRepository.deleteById(id);
     }
 
+    //prima non so il perche nell argomento del metodo delete, aveva messo String id, e id é un Long
 
 
 }
