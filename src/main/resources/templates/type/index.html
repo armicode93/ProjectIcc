@@ -10,12 +10,32 @@
     <div layout:fragment="content">
         <h1 th:text="${title}">Liste des types</h1>
 
-        <ul th:unless="${#lists.isEmpty(types)}">
-            <li th:each="type : ${types}">
-                <span th:text="${type.typeName}">Acteur</span>
-                <a th:href="@{/types/{id}(id=${type.id})}">View</a>
-            </li>
-        </ul>
+        <table class="table" th:unless="${#lists.isEmpty(types)}">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Type</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr scope="row" th:each="type : ${types}">
+                <td th:text="${type.typeName}">Acteur</td>
+                <td><a th:href="@{'/types/'+${type.id}} ">View</a></td>
+                <!-- delete form -->
+                <td>
+                    <form th:id="|deleteForm-${type.id}|"
+                          th:action="@{'/types/delete/'+ ${type.id}}" th:method="delete">
+                        <!--delete form -->
+
+                        <a href="#"  th:onclick="|if(confirm('Confirm delete type #${type.id}'))
+                document.getElementById('deleteForm-${type.id}').submit();
+                    return false;|">Delete</a> <!-- alert with javascript -->
+
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
         <a th:href="@{/types/add}">Add New Type</a>
 

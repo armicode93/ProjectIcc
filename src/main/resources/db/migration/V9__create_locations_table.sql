@@ -18,4 +18,4 @@ ALTER TABLE `locations`
 --
 ALTER TABLE `locations`
     ADD CONSTRAINT `locations_locality_id_22dd0b44_fk_localities_id` FOREIGN KEY (`locality_id`)
-        REFERENCES `localities` (`id`);
+        REFERENCES `localities` (`id`) ON DELETE CASCADE;

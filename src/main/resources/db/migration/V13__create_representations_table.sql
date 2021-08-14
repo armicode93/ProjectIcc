@@ -17,7 +17,7 @@ ALTER TABLE `representations`
 --
 ALTER TABLE `representations`
     ADD CONSTRAINT `representations_location_id_a6832141_fk_locations_id` FOREIGN KEY
-        (`location_id`) REFERENCES `locations` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+        (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE;
 ALTER TABLE `representations`
     ADD CONSTRAINT `representations_show_id_a6832141_fk_shows_id` FOREIGN KEY (`show_id`)
-        REFERENCES `shows` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+        REFERENCES `shows` (`id`) ON DELETE CASCADE;

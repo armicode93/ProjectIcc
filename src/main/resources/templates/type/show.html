@@ -19,6 +19,17 @@
         </ul><br/><br/>
 
         <nav><a th:href="@{'/types/edit/'+ ${type.id}}">Edit</a></nav>
+
+        <form th:id="|deleteForm-${type.id}|"
+              th:action="@{'/types/delete/'+ ${type.id}}" th:method="delete">
+            <!--delete form -->
+
+            <a href="#"  th:onclick="|if(confirm('Confirm delete type #${type.id}'))
+                document.getElementById('deleteForm-${type.id}').submit();
+                    return false;|">Delete</a> <!-- alert with javascript -->
+
+        </form>
+
         <nav><a th:href="@{/types}">Retour à l'index</a></nav>
     </div>
 </div>

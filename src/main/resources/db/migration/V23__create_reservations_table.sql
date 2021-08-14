@@ -17,7 +17,7 @@ ALTER TABLE `reservations`
 --
 ALTER TABLE `reservations`
     ADD CONSTRAINT `reservations_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-        ON UPDATE CASCADE ON DELETE RESTRICT;
+        ON DELETE CASCADE;
 ALTER TABLE `reservations`
     ADD CONSTRAINT `reservations_representation_id` FOREIGN KEY (`representation_id`)
-        REFERENCES `representations` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+        REFERENCES `representations` (`id`) ON DELETE CASCADE;

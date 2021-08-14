@@ -125,5 +125,17 @@ public class TypeController {
 
     }
 
+    @DeleteMapping("types/delete/{id}")
+    public String delete(@PathVariable("id") String id, Model model)
+    {
+        Type existing = service.get(id);
+        if(existing!=null) {
+            Long indice = (long) Integer.parseInt(id);
+            service.delete(indice);
+        }
+        return "redirect:/types";
+
+    }
+
 
 }

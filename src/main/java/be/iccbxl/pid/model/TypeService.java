@@ -34,10 +34,9 @@ public class TypeService {
         typeRepository.save(type);
     }
 
-    public void delete(String id) {
-        Long indice = (long) Integer.parseInt(id);
+    public void delete(Long id) {
 
-        typeRepository.deleteById(indice);
+        typeRepository.deleteById(id);
     }
    //
     public Type save(Type type) {
