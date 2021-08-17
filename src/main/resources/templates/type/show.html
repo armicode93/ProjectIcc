@@ -16,21 +16,25 @@
         <ul th:unless="${#lists.isEmpty(type.artists)}">
             <li th:each="artist : ${type.artists}"
                 th:text="|${artist.firstname} ${artist.lastname}|">Firstname Lastname</li>
-        </ul><br/><br/>
+        </ul><br/>
+        <table>
+            <tr>
 
-        <nav><a th:href="@{'/types/edit/'+ ${type.id}}">Edit</a></nav>
+        <td><a th:href="@{'/types/edit/'+ ${type.id}}" class="btn btn-default">Edit</a></td>
 
         <form th:id="|deleteForm-${type.id}|"
               th:action="@{'/types/delete/'+ ${type.id}}" th:method="delete">
             <!--delete form -->
 
-            <a href="#"  th:onclick="|if(confirm('Confirm delete type #${type.id}'))
+           <td> <a href="#"  th:onclick="|if(confirm('Confirm delete type #${type.id}'))
                 document.getElementById('deleteForm-${type.id}').submit();
-                    return false;|">Delete</a> <!-- alert with javascript -->
+                    return false;|" class="btn btn-danger">Delete</a></td> <!-- alert with javascript -->
 
         </form>
+            </tr>
 
-        <nav><a th:href="@{/types}">Retour à l'index</a></nav>
+            <tr> <td><a th:href="@{/types}" class="btn btn-link">Back to the main page</a></td></tr>
+        </table>
     </div>
 </div>
 </body>

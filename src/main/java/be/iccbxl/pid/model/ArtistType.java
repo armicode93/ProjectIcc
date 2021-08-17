@@ -14,7 +14,7 @@ import java.util.List;
 public class ArtistType  {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
 
     private Long id;
     @ManyToOne
@@ -33,12 +33,12 @@ public class ArtistType  {
             inverseJoinColumns= @JoinColumn(name = "show_id"))
     private List<Show> shows = new ArrayList<>();
 
-    protected ArtistType (){}
+    public ArtistType (){}
 
-    public ArtistType(Artist artist, Type type, List<Show> shows) {
+    public ArtistType(Artist artist, Type type) {
         this.artist = artist;
         this.type = type;
-        this.shows = shows;
+
     }
 
 

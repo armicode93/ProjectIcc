@@ -21,7 +21,10 @@ public class ArtistController {
     ArtistService artistService; //permet utiliser methodes metiers qui manipulent donnee
 
     @Autowired
-    private TypeRepository typeRepository;
+    TypeService service;
+
+    @Autowired
+    ArtistTypeService artistTypeService;
 
 
 
@@ -62,7 +65,7 @@ public class ArtistController {
 
         return "artist/edit";
     } //ok
-    @PostMapping("/artists/edit/{id}")
+    @PutMapping("/artists/edit/{id}")
     public String artistSubmit(@Valid @ModelAttribute("artist") Artist artist, BindingResult result,@PathVariable("id") String id, Model model)
     {
         if (result.hasErrors()) {
@@ -106,7 +109,7 @@ public class ArtistController {
             return "artist/add";
         }
 
-        @PostMapping("/artists/add") //no funzionante errore
+        @PostMapping("/artists/add")
         public String artistSubmitAdd(@Valid @ModelAttribute("artist") Artist artist, BindingResult result,ModelMap model) //model attribute serve per recuperare gli input dei campi riempiti
         {
 
@@ -127,7 +130,6 @@ public class ArtistController {
 
 
 
-
         }
 
     @DeleteMapping("/artists/delete/{id}")
@@ -140,5 +142,25 @@ public class ArtistController {
         return "redirect:/artists";
     }
 
+   /* @PostMapping("/add_new_artist_type")
+    public String processAddNewArtistType(Model model, @ModelAttribute("artistId") Long artistId,
+                                          @ModelAttribute("typeId") Long typeId) {
+        Artist artist = artistService.getOne(artistId);
+        Type type = service.findOneById(typeId);
+
+        if (!artist.getTypes().stream().filter(t -> t.getId() == typeId).findAny().isPresent()) {
+            ArtistType artistType = new ArtistType(artist, type);
+            artistTypeService.save(artistType);
+            artist = artistService.getOne(artistId);
+            artist.getTypes().add(type);
+        }
+        model.addAttribute("types", service.getAllType());
+        model.addAttribute("artist", artist);
+        model.addAttribute("title", "Fiche d'un artiste");
+
+        return "artist/show";
+    }
+
+    */
 
 }

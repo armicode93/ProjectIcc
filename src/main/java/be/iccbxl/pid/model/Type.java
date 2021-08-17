@@ -76,9 +76,9 @@ public Type(Long id, String typeName) {
         return typeName;
     }
 
-    public void setTypeName(String type) {
-        this.typeName = type;
-    }
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    } //era = type
     @Override
     public String toString() {
         return "Type [id=" + id + ", type=" + typeName + "]";

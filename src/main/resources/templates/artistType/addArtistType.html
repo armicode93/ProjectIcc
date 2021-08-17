@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html   lang="fr"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+        layout:decorate="~{layouts/main}">
+<head>
+    <title>Artist type</title>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <form action="# " th:action="@{'/artists/edit/'+ ${artistType.id}}" th:object="${artistType}" method="post">
+            <div class="form-group">
+                <select class="form-control" th:field="${artistType}"  id="artistType">
+                    <option value="0">select type</option>
+                    <option th:each="type : ${artistType.types}" th:value="${type.id}" th:text="${type.typeName}"></option>
+                </select>
+                <button type="submit" th:text="Edit" /><br/><br/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

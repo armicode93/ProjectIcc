@@ -19,7 +19,7 @@
 
 <div class="container">
     <div layout:fragment="content">
-        <form action="# " th:action="@{'/artists/edit/'+ ${artist.id}}" th:object="${artist}" method="post" class="form"> <!-- th:object ci serve per fare collegamento con il model -->
+        <form action="# " th:action="@{'/artists/edit/'+ ${artist.id}}" th:object="${artist}" method="post"> <!-- th:object ci serve per fare collegamento con il model -->
        <!-- <h1 th:text="|${artist.firstname} ${artist.lastname}|">ARMEN sulu</h1> -->
            <div class="form-group">
                 <strong> <label for="firstname">Prénom</label></strong>
@@ -33,9 +33,11 @@
                     <input class="form-control" type="text" th:field="*{lastname}"  id="lastname"  >
                 <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" th:errorclass="error"></div>
             </div>
+
+
             <br/>
 
-                    <input type="submit" value="Submit" /><br/><br/>
+                    <button type="submit" th:text="Edit" /><br/><br/>
 
 
 

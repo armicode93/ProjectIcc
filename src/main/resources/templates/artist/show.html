@@ -11,30 +11,73 @@
     <div layout:fragment="content">
 
         <h1 th:text="${artist.firstname} +' '+ ${artist.lastname}">Bob Sull</h1>
+        <div><a th:href="@{'/artistType/add_new_artist_type/'+ ${artist.id}}" class="btn btn-primary">Add type</a></div>
+
+
+        <!--<form  action="# " th:action="@{/add_new_artist_type}" th:object="${artist}"
+               method="post" >
+            <div class="m-3">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Type: </label>
+
+                        <select class="form-control" th:name="type">
+                            <option value="0">select type</option>
+                            <option th:each="type : ${types}"
+                                    th:value="${type.id}"
+                                    th:text="${type.typeName}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" th:name="artistId" th:value="${artist.id}">
+                <div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Add type</button>
+                    </div>
+                    -->
+
 
 
         <h2>Liste des types</h2>
         <ul th:unless="${#lists.isEmpty(artist.types)}">
             <li th:each="type : ${artist.types}" th:text="${type.typeName}">Type</li>
+
+
         </ul>
+
         <!-- affichage des types (fonction) de l'artist-->
         <!-- <h1 th:text="|${artist.firstname} ${artist.lastname}|">Bob Sull</h1> # -->
         <!-- // la barre vertical cest une concatenation,soit on fais avec le + soit avec la barre     -->
 
         <table>
-            <tr><th><div><a href="#" th:href="@{'/artists/edit/'+ ${artist.id}}" class="btn btn-primary">Edit</a></div></th>
-            <tr><th><div><a href="#" th:href="@{/artists}" class="btn btn-primary">Annuler</a></div></th>
+            <tr><td><a href="#" th:href="@{'/artists/edit/'+ ${artist.id}}" class="btn btn-default">Edit</a></td>
 
 
-        </table>
+
+
         <form th:id="|deleteForm-${artist.id}|"
               th:action="@{'/artists/delete/'+ ${artist.id}}" th:method="delete">
-            <a href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id} '))
+           <td> <a href="#" th:onclick="|if(confirm('Confirm delete artist #${artist.id} '))
         document.getElementById('deleteForm-${artist.id}').submit();
-        return false;|">Delete</a>
+        return false;|" class="btn btn-danger">Delete</a>
+           </td>
+
+
+
+
+
+
+        </form>
+        </tr>
+
+            <tr><td><div><a href="#" th:href="@{/artists}" class="btn btn-link">Back to the main page</a></div></td></tr>
+        </table>
 
             <!-- unica maniera per aggiungere un alertin html e fare un th onclick con javascript -->
-        </form>
+
+
+
+
     </div>
 </div>
 </body>

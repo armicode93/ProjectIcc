@@ -21,19 +21,22 @@
         </ul>
         <p th:if="${#lists.isEmpty(locality.locations)}">Aucun lieu de spectacle</p>
 
-        <nav><a th:href="@{'/localities/edit/' +${locality.id}}">Edit</a></nav>
+        <table>
+        <tr><td><a th:href="@{'/localities/edit/' +${locality.id}}" class="btn btn-default">Edit</a></td>
         <form th:id="|deleteForm-${locality.id}|"
               th:action="@{'/localities/delete/'+ ${locality.id}}" th:method="delete">
             <!--delete form -->
 
-            <a href="#"  th:onclick="|if(confirm('Confirm delete locality #${locality.id}'))
+            <td><a href="#"  th:onclick="|if(confirm('Confirm delete locality #${locality.id}'))
                 document.getElementById('deleteForm-${locality.id}').submit();
-                    return false;|">Delete</a> <!-- alert with javascript -->
+                    return false;|" class="btn btn-danger">Delete</a></td> <!-- alert with javascript -->
 
         </form>
+        </tr>
 
 
-        <nav><a th:href="@{/localities}">Back to the Main page</a></nav>
+        <tr><td><nav><a th:href="@{/localities}" class="btn btn-link">Back to the Main page</a></nav></td></tr>
+        </table>
 
     </div>
 </div>

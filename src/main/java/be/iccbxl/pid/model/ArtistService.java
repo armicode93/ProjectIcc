@@ -26,6 +26,11 @@ public class ArtistService {
         return artistRepository.findById(indice);
 
     }
+    public Artist getOne(Long artistId) {
+
+        return artistRepository.findById(artistId).orElse(null);
+
+    }
 
     public void addArtist(Artist artist) {
         artistRepository.save(artist);
