@@ -30,17 +30,20 @@ public class Role {
     @ManyToMany
     @JoinTable(
             name="role_user", //name table de jointure
-            joinColumns= @JoinColumn(name="user_id"), //name column de jointure
-            inverseJoinColumns= @JoinColumn(name = "role_id")) //name deuxieme column de jointure
+            joinColumns= @JoinColumn(name="user_id", referencedColumnName = "id"), //name column de jointure
+            inverseJoinColumns= @JoinColumn(
+                    name = "role_id", referencedColumnName = "id")) //name deuxieme column de jointure
+    //I added referencedColumnName
     private List<User> users= new ArrayList<>();
 
-    protected Role(){}
+    protected Role() {
 
-    public Role(String role) {
-        this.roleName = role;
     }
 
-
+    public Role(String roleName) {
+        super();
+        this.roleName = roleName;
+    }
 
     public Long getId() {
         return id;

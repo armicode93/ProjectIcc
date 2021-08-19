@@ -1,7 +1,7 @@
 package be.iccbxl.pid.model;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import javax.validation.constraints.*;
 import javax.persistence.*;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity //to make this class as a JPA Entity
 @Table(name="artists")
 
 
@@ -40,6 +40,13 @@ public class Artist {
     public Artist(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
+    }
+
+    public Artist(Long id,  String lastname, List<Type> types) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.types = types;
     }
 
     public Long getId() {

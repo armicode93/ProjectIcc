@@ -1,5 +1,4 @@
 package be.iccbxl.pid.model;
-
 import org.apache.tomcat.jni.Local;
 import org.springframework.data.repository.CrudRepository;
 

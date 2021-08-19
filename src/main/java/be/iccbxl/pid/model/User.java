@@ -3,39 +3,51 @@ package be.iccbxl.pid.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name="users")
+@Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = "email")) //unique
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
     private String login;
+
     private String password;
+
     private String firstname;
+
     private String lastname;
+
     private String email;
+
     private String langue;
 
-    @ManyToMany(mappedBy="users")
-    private List<Role> roles = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy="users") //caricamento veloce dei dati,senno LAZY caricamento quando necessario
+    private Collection<Role> roles;
 
     @ManyToMany(mappedBy="users")
-    private List<Representation> representations =new ArrayList<>();
+    private List <Representation> representations =new ArrayList<>();
+    //Collection e linterfaccia principale della gerarchia di java Collection,che comprende List,SET
 
 
-    protected User(){}
+    public User(){}
 
-    public User( String login, String password, String firstname, String lastname, String email, String langue) {
+    public User( String login, String password, String firstname, String lastname, String email, String langue, Collection<Role> roles) {
+        super();
         this.login = login;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.langue = langue;
+        this.roles = roles;
     }
+
+
 
     public Long getId() {
         return id;
@@ -91,6 +103,14 @@ public class User {
 
     public void setLangue(String langue) {
         this.langue = langue;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     public List<Representation> getRepresentations() {

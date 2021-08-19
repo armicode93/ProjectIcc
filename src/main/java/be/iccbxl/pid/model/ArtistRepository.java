@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+//or extends @JpaRepository and add @Repository annotation
 public interface ArtistRepository extends CrudRepository <Artist, Long> {
         List<Artist> findByLastname(String lastname);
         List<Artist> findByFirstname(String firstname);

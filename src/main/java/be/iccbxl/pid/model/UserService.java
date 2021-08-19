@@ -2,13 +2,16 @@ package be.iccbxl.pid.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import be.iccbxl.pid.controller.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService; //username - the username identifying the user whose data is required.
 import org.springframework.stereotype.Service;
 @Service
-public class UserService {
-    @Autowired
-    private UserRepository repository;
-    public List<User> getAllUsers() {
+public interface UserService extends UserDetailsService {
+   User save(UserRegistrationDto registrationDto);
+
+    /*public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         repository.findAll().forEach(users::add);
         return users;
@@ -27,5 +30,8 @@ public class UserService {
         Long indice = (long) Integer.parseInt(id);
         repository.deleteById(indice);
     }
+
+     */
+
 }
 
