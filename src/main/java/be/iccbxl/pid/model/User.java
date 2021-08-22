@@ -2,6 +2,7 @@ package be.iccbxl.pid.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,6 +15,7 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+
     private String login;
 
     private String password;
@@ -23,6 +25,8 @@ public class User {
     private String lastname;
 
     private String email;
+
+    @Size(min=2, max=2)
 
     private String langue;
 

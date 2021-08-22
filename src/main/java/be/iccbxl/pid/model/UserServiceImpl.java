@@ -41,11 +41,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(username); //prendiamo lo user object from the database //from the login screen we pass email adresse and password
+        User user = userRepository.findByLogin(username); //prendiamo lo user object from the database //from the login screen we pass email adresse and password
         if(user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
 
     }
     //Methode to maps roles to authorities, we are going to convert Roles t oauthorities

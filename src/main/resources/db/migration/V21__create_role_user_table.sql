@@ -15,6 +15,6 @@ ALTER TABLE `role_user`
 --
 ALTER TABLE `role_user`
     ADD CONSTRAINT FOREIGN KEY (`role_id`) REFERENCES
-        `roles` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT,
+        `roles` (`id`) ON DELETE CASCADE,
     ADD CONSTRAINT  FOREIGN KEY (`user_id`) REFERENCES `users`
-        (`id`) ON UPDATE CASCADE ON DELETE RESTRICT;
+        (`id`) ON DELETE CASCADE;

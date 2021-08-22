@@ -20,6 +20,7 @@ public class UserRegistrationDto {
     }
 
     public UserRegistrationDto(String login, String password, String firstname, String lastname, String email, String langue) {
+        super();
         this.login = login;
         this.password = password;
         this.firstname = firstname;
