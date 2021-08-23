@@ -2,7 +2,8 @@
 <html   lang="fr"
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
 
@@ -16,6 +17,7 @@
 <!-- Creation navigation bar , i'm going to add boostrap code-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+
 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed"
@@ -36,11 +38,13 @@
         <!-- Creation Form registration -->
     <div class="container">
 
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
         <!-- succes message -->
 
-        <div th:if="${param.succes}">
-            <div class="alert alert-info">You are sucessfully registered</div>
-        </div>
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You are sucessfully registered</div>
+                </div>
 
         <h1> Registration </h1>
         <form action="# " th:action="@{'/registration'}" method="post" th:object="${user}">
@@ -48,16 +52,20 @@
                 <label class="control-label" for="login"> Login </label>
                 <input id="login" class="form-control" th:field="*{login}"
                        required autofocus="autofocus" />
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('login')}"  th:errors="*{login}" th:errorclass="fieldError"></div>
+
 
                 <div class="form-group">
                     <label class="control-label" for="password"> Password </label> <input
                         id="password" class="form-control" type="password"
                         th:field="*{password}" required autofocus="autofocus" />
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}"  th:errors="*{password}" th:errorclass="fieldError"></div>
                 </div>
 
                 <label class="control-label" for="firstname"> First Name </label>
                 <input id="firstname" class="form-control" th:field="*{firstname}"
                        required autofocus="autofocus" />
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('firstname')}"  th:errors="*{firstname}" th:errorclass="fieldError"></div>
 
 
             </div>
@@ -65,6 +73,7 @@
                 <label class="control-label" for="lastname"> LastName </label> <input
                     id="lastname" class="form-control" th:field="*{lastname}"
                     required autofocus="autofocus" />
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}"  th:errors="*{lastname}" th:errorclass="fieldError"></div>
             </div>
 
 
@@ -72,12 +81,14 @@
                 <label class="control-label" for="email"> Email </label> <input
                     id="email" class="form-control" th:field="*{email}" required
                     autofocus="autofocus" />
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}"  th:errors="*{email}" th:errorclass="fieldError"></div>
             </div>
 
             <div class="form-group">
                 <label class="control-label" for="langue"> Langue </label> <input
                     id="langue" class="form-control"
                     th:field="*{langue}" required autofocus="autofocus" />
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('langue')}"  th:errors="*{langue}" th:errorclass="fieldError"></div>
             </div>
 
             <div class="form-group">
@@ -85,7 +96,11 @@
                 <span>Already registered? <a href="/" th:href="@{/login}">Login
 								here</a></span>
             </div>
+
         </form>
+    </div>
+
+    </div>
     </div>
 
 </body>

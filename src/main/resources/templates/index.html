@@ -27,12 +27,19 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#" th:href="@{/}">Registration and
-                Login Module</a>
+            <a class="navbar-brand" href="#" th:href="@{/}">Project Reservation</a>
         </div>
-        <!-- log out -->
+        <!-- log out  bar -->
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
+
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/artists}">Artist</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/localities}">Locality</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/roles}">Role</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/locations}">Location</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/shows}">Show</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/representations}">Representation</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/types}">Type</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                 <!-- we can add link for home, or about us ecc ecc, questo link andra nel securityConfig class -->
             </ul>
@@ -42,16 +49,20 @@
     </nav>
     <br>
     <br>
+<!-- logout message -->
+
 
     <div class="container">
         <h1>Home page</h1>
-    </div>
+
     <!-- print username id -->
 <!--sec:authentification thymeleaf attribute to springSecurity
 principal.username sintax to take the username from the spring security object -->
 
-    Welcome <span sec:authentification="principal.username">User</span>
+    Welcome <span sec:authentication="principal.username"></span>
 
+
+    </div>
 
 </body>
 </html>
