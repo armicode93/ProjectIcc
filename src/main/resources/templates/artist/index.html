@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html   lang="fr"
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-        layout:decorate="~{layouts/main}">
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Liste des artistes</title>
 </head>
@@ -33,7 +33,7 @@
                           th:action="@{'/artists/delete/'+ ${artist.id}}" th:method="delete">
                         <!--delete form -->
 
-                        <a href="#"  th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
+                            <a href="#"  th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
                 document.getElementById('deleteForm-${artist.id}').submit();
                     return false;|">Delete</a> <!-- alert with javascript -->
 
@@ -44,7 +44,7 @@
 
             </tbody>
         </table>
-        <a th:href="@{'/artists/add'}" class="btn btn-primary">Add New Artist</a>
+        <a sec:authorize= 'hasRole("admin")' th:href="@{'/artists/add'}" class="btn btn-primary">Add New Artist</a>
     </div>
 </div>
 </body>

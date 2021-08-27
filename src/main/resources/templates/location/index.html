@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layouts/main}">
 <head>
@@ -9,16 +10,25 @@
 <div class="container">
     <div layout:fragment="content">
         <h1 th:text="${title}">Liste des lieux de spectacle</h1>
-        <ul th:unless="${#lists.isEmpty(locations)}">
+        <table th:unless="${#lists.isEmpty(locations)}">
 
-            <li th:each="location : ${locations}">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Designation</th>
+                <th scope="col">WebSite</th>
+            </tr>
+            </thead>
+            <tbody>
 
-                <span th:text="${location.designation}">Designation</span>
-                <a th:if="${location.website}" th:text="${location.website}"
-                   th:href="${location.website}">Website</a>
-                <a th:href="@{/locations/{id}(id=${location.id})}">Voir</a>
-            </li>
-        </ul>
+            <tr scope="row" th:each="location : ${locations}">
+
+                <td th:text="${location.designation}">Designation</td>
+                <td> <a th:if="${location.website}" th:text="${location.website}"
+                 th:href="${location.website}">Website</a></td>
+                <td><a th:href="@{/locations/{id}(id=${location.id})}">Voir</a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>

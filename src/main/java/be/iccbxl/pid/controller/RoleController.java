@@ -42,6 +42,35 @@ public class RoleController {
 
         return "role/show";
     }
+    @GetMapping("/roles/add")
+
+    public String rolesFormAdd(Model model)
+    {
+        model.addAttribute(new Role());
+        return "role/addRole";
+    }
+
+    @PostMapping("/roles/add")
+    public String roleSubmitAdd(@Valid @ModelAttribute("role") Role role, BindingResult result,Model model) //model attribute serve per recuperare gli input dei campi riempiti
+    {
+
+        if (result.hasErrors()) {
+            return "role/addRole";
+        }
+
+
+
+
+        role.setRoleName(role.getRoleName());
+
+        model.addAttribute(new Role());
+        service.add(role);
+        // model.addAttribute("artist", artistService.getAllArtists());
+        return "redirect:/roles"; //redirection apres la sauvgarde
+
+
+
+    }
 
     @GetMapping("roles/add/{id}")
     public String roleEditForm(Model model, @PathVariable("id") String id)
@@ -70,7 +99,7 @@ public class RoleController {
         return "role/show";
 
     }
-    @PostMapping("/roles/delete/{id}")
+    @DeleteMapping ("/roles/delete/{id}")
     public String delete (@PathVariable("id") String id, Model model)
     {
         Role existing = service.getRole(id);

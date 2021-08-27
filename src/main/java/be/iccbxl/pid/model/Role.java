@@ -36,7 +36,7 @@ public class Role {
     //I added referencedColumnName
     private List<User> users= new ArrayList<>();
 
-    protected Role() {
+    public Role() {
 
     }
 
@@ -57,8 +57,8 @@ public class Role {
         return roleName;
     }
 
-    public void setRoleName(String role) {
-        this.roleName = role;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public List<User> getUsers() {

@@ -19,6 +19,11 @@ public class MainController {
     {
         return "index";
     }
+    @GetMapping("/4003")
+    public String accessDenied()
+    {
+        return "403";
+    }
 
 
 

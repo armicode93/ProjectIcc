@@ -65,7 +65,7 @@ public class ArtistController {
 
         return "artist/edit";
     } //ok
-    @PutMapping("/artists/edit/{id}")
+    @PostMapping ("/artists/edit/{id}")
     public String artistSubmit(@Valid @ModelAttribute("artist") Artist artist, BindingResult result,@PathVariable("id") String id, Model model)
     {
         if (result.hasErrors()) {

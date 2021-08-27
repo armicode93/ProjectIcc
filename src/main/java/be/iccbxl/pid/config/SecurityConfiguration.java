@@ -46,12 +46,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
     protected void configure (AuthenticationManagerBuilder auth) throws  Exception{
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("select login ,password ,true from users where login=?")
+                .usersByUsernameQuery("select login as principal ,password as credentials ,true from users where login=?")
                 //con principal e credentials diciamo a spring che 1 e username e l'altro e password
                 //requette pour cherche le user
-                .authoritiesByUsernameQuery("SELECT roles.role as role,users.login as principal ,users.password,users.firstname,users.lastname,users.email,users.langue FROM role_user,roles,users WHERE role_user.role_id =roles.id and users.login =?")
+                .authoritiesByUsernameQuery("select r.role,u.login FROM role_user ru,roles r,users u where r.id = ru.role_id AND ru.user_id = u.id and u.login=?")
                 //pour recuperer le role de l'utilisateur
-                .passwordEncoder(new BCryptPasswordEncoder())
+                .passwordEncoder(passwordEncoder())
                 .rolePrefix("ROLE_");
                 //con principal e credentials diciamo a spring che 1 e username e l'altro e password
        /* auth.inMemoryAuthentication().withUser("admin").roles("admin","user");    //ca veut dire que les user il sont en memoire pour le moment
@@ -66,42 +66,50 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
     @Override // we are going to override config methods
     protected  void configure(HttpSecurity http) throws Exception{ //we have a config method
         //we are going to provide our configuration
-        http.authorizeRequests().antMatchers("/artist/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/locality/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/location/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/representation/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/role/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/show/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/type/index").hasRole("user");
-        http.authorizeRequests().antMatchers("/login","/index").hasRole("user");
-
-        http.authorizeRequests().antMatchers("/artist/edit").hasRole("admin");
-        http.authorizeRequests().antMatchers("/artist/add").hasRole("admin");
-        http.authorizeRequests().antMatchers("/artist/show").hasRole("admin");
-
-        http.authorizeRequests().antMatchers("/locality/editLocalty").hasRole("admin");
-        http.authorizeRequests().antMatchers("/locality/addLocality").hasRole("admin");
-        http.authorizeRequests().antMatchers("/locality/show").hasRole("admin");
-
-        http.authorizeRequests().antMatchers("/location/show").hasRole("admin");
-
-        http.authorizeRequests().antMatchers("/representation/show").hasRole("admin");
-
-        http.authorizeRequests().antMatchers("/role/show").hasRole("admin");
-        http.authorizeRequests().antMatchers("/role/editRole").hasRole("admin");
-
-        http.authorizeRequests().antMatchers("/type/show").hasRole("admin");
-        http.authorizeRequests().antMatchers("/type/editType").hasRole("admin");
-        http.authorizeRequests().antMatchers("/type/addType").hasRole("admin");
 
 
+        http.authorizeRequests().antMatchers("/artist/index").hasRole("USER");
+        http.authorizeRequests().antMatchers("/locality/index").hasRole("USER");
+        http.authorizeRequests().antMatchers("/location/index").hasRole("USER");
+        http.authorizeRequests().antMatchers("/representation/index").hasRole("USER");
+        http.authorizeRequests().antMatchers("/role/index").hasRole("USER");
+        http.authorizeRequests().antMatchers("/show/index").hasRole("USER");
+        http.authorizeRequests().antMatchers("/type/index").hasRole("USER");
 
-        http.authorizeRequests().antMatchers(
-                "/registration**", // we have provided the acces to the different url
-                "/js/**",
-                "/css/**",
-                "/img/**").permitAll()
-               .anyRequest().authenticated() //authenticate anyRequest to this url
+
+        http.authorizeRequests().antMatchers("/artist/edit").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/artist/add").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/artist/show").hasRole("ADMIN");
+
+        http.authorizeRequests().antMatchers("/locality/editLocality").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/locality/addLocality").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/locality/show").hasRole("ADMIN");
+
+        http.authorizeRequests().antMatchers("/location/show").hasRole("ADMIN");
+
+        http.authorizeRequests().antMatchers("/representation/show").hasRole("ADMIN");
+
+        http.authorizeRequests().antMatchers("/role/show").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/role/editRole").hasRole("ADMIN");
+
+        http.authorizeRequests().antMatchers("/type/show").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/type/editType").hasRole("ADMIN");
+        http.authorizeRequests().antMatchers("/type/addType").hasRole("ADMIN");
+
+
+
+
+
+
+        /* http.authorizeRequests().antMatchers(
+                "/registration", // we have provided the acces to the different url
+                "login",
+                 "index"
+                ).hasRole("USER");
+         http.authorizeRequests().antMatchers(
+                 "artist/**"
+         ).hasRole("ADMIN")
+                //authenticate anyRequest to this url
                 .and()
                 .formLogin()// we are going to use a form login
                 .loginPage("/login") //costum login page
@@ -114,7 +122,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
                         .logoutSuccessUrl("/login?logout")
                 .permitAll(); // permit acces to this url
 
-        http.exceptionHandling().accessDeniedPage("/   403"); //redirection quando non possiamo accedere ad una pagina offlimits,
+         */
+        http.authorizeRequests().anyRequest().authenticated();
+        http.formLogin();
+
+
+        http.exceptionHandling().accessDeniedPage("/403"); //redirection quando non possiamo accedere ad una pagina offlimits,
 
     }
 }

@@ -13,16 +13,41 @@
     <div layout:fragment="content">
         <h1 th:text="${title}">Liste des role</h1>
 
-        <ul th:unless="${#lists.isEmpty(roles)}">
-            <li th:each="role :${roles}">
+        <table class="table" th:unless="${#lists.isEmpty(roles)}">
 
-                <span th:text="${role.roleName}">Roles</span>
-            <a th:href="@{/roles/{id}(id=${role.id})}">View</a>
-            </li>
-        </ul>
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Role</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr scope="row" th:each="role :${roles}">
+
+                <td th:text="${role.roleName}">Roles</td>
+           <td> <a th:href="@{'/roles/'+ ${role.id}}">View</a></td>
 
 
-        <!--<nav> <a th:href="@{'/roles/add/'+${role.id}}">Add New  Role</a></nav>-->
+
+
+        <td>
+        <form th:id="|deleteForm-${role.id}|"
+              th:action="@{'/roles/delete/'+ ${role.id}}" th:method="delete">
+            <!--delete form -->
+
+            <a href="#"  th:onclick="|if(confirm('Confirm delete role #${role.id}'))
+                document.getElementById('deleteForm-${role.id}').submit();
+                    return false;|">Delete</a> <!-- alert with javascript -->
+
+        </form>
+        </td>
+        </tr>
+            </tbody>
+        </table>
+
+
+
+        <a th:href="@{'/roles/add/'}" class="btn btn-primary">Add New  Role</a>
 
     </div>
 </div>
