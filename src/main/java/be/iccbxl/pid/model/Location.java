@@ -73,6 +73,7 @@ public class Location {
         return designation;
     }
 
+
     public void setDesignation(String designation) {
         this.designation = designation;
 

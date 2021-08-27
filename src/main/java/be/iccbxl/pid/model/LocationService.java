@@ -24,6 +24,7 @@ public class LocationService {
 
         Optional<Location> location = locationRepository.findById(indice);
 
+
         return location.isPresent() ? location.get() : null;
     }
     public void add(Location location) {

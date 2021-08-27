@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/main}">
+<head>
+    <title>Liste des représentations de spectacle</title>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+
+        <form action="# " th:action="@{'/reservations/add'}" th:object="${reservation}" method="post" class="form">
+        <h1>Reservations spectacle</h1>
+        <!--<select class="form-control" th:field="${representations}"  id="LocationShow">
+            <option value="0">--Please choose a show--</option>
+            <option th:each="representation: ${representations}"
+                    th:value="${locationt}"
+                    th:text="${representation.location.designation}+'    :     '+${representation.show.title}+'      :       '     +${representation.when} "></option>
+
+
+        </select>
+        -->
+            <select class="form-control" th:field="${representations}"  id="LocationS">
+                <option value="0">--Please choose a show--</option>
+                <option th:each="representation: ${representations}"
+                        th:value="${locationt}"
+                        th:text="${representation.location.designation}"></option>
+
+
+            </select>
+            <br>
+            <br>
+
+           <!-- <select class="form-control" th:field="${representations}"  id="LocationShow">
+                <option value="0">--Please choose a show--</option>
+                <option th:each="representation: ${representations}"
+                        th:value="${locationSh}"
+                        th:text="${representation.show.title}"></option>
+
+
+            </select>
+            -->
+        <select class ="form-control" th:field="${representations}" id="places">
+            <option value="0">--Number of places--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="4">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+
+
+
+        </select>
+
+            <!--<select class="form-control" th:field="${representations}"  id="show">
+                <option value="0">--Please choose a show--</option>
+                <option th:each="representation: ${representations}"
+
+                        th:text="${representation.show.title}" th:value="${show}" ></option>
+
+            </select>
+            -->
+
+
+
+
+
+       <!-- <ul th:unless="${#lists.isEmpty(location.shows)}">
+            <li th:each="show : ${location.shows}" th:text="${show.title}">show title</li>
+        </ul>
+        -->
+
+        <input class="btn btn-primary" type="submit" value="Submit" /><br/><br/>
+        </form>
+
+    </div>
+    >
+</div>
+
+</body>
+</html>

@@ -41,8 +41,10 @@
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/representations}">Representation</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/types}">Type</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+               <li> <a class="navbar-brand" href="#" th:href="@{/reservations/index}">Réservations</a></br></li>
                 <!-- we can add link for home, or about us ecc ecc, questo link andra nel securityConfig class -->
             </ul>
+
         </div>
     </div>
 

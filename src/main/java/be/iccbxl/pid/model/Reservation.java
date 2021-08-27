@@ -1,13 +1,17 @@
 package be.iccbxl.pid.model;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="reservations")
+@ToString
 
 public class Reservation {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -28,6 +32,7 @@ public class Reservation {
         this.user = user;
         this.places = places;
     }
+
 
     public Long getId() {
         return id;
@@ -60,5 +65,6 @@ public class Reservation {
     public void setPlaces(Long places) {
         this.places = places;
     }
+
 
 }

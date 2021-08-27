@@ -38,6 +38,15 @@ public class User {
     //Collection e linterfaccia principale della gerarchia di java Collection,che comprende List,SET
 
 
+    public User(String login, String password, String firstname, String lastname, String email,  String langue) {
+        this.login = login;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.langue = langue;
+    }
+
     public User(){}
 
     public User( String login, String password, String firstname, String lastname, String email, String langue, Collection<Role> roles) {
@@ -51,7 +60,10 @@ public class User {
         this.roles = roles;
     }
 
-
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
