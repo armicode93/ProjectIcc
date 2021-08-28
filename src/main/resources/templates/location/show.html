@@ -4,14 +4,16 @@
       layout:decorate="~{layouts/main}">
 <head>
     <title>Fiche d'un lieu de spectacle</title>
+    <link rel ="stylesheet" type ="text/css" href ="/webjars/boostrap/4.1.3/css/boostrap.min.css"/>
 </head>
 <body>
+<table class ="table">
     <div class="container">
         <div layout:fragment="content">
             <h1 th:text="${location.designation}">Designation</h1>
                 <address>
                     <p th:text="${location.address}">Address</p>
-            <p th:text="|${location.locality.postalCode} ${location.locality.locality}|">postalCode locality</p>
+            <p th:text="|${location.locality.postalCode} ${location.locality.localityName}|">postalCode locality</p>
 
                     <p th:if="${location.website}"><a th:text="${location.website}" th:href="@{${location.website}}" target="_blank">website</a></p>
             <p th:unless="${location.website}">Pas de site web</p>
@@ -25,8 +27,11 @@
             <p th:if="${#lists.isEmpty(location.shows)}">Aucun spectacle.</p>
 
             <nav><a th:href="@{/locations}">Retour à l'index</a></nav>
+
         </div>
+
     </div>
+</table>
 </body>
 </html>
 

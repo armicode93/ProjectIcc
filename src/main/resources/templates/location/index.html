@@ -5,12 +5,14 @@
       layout:decorate="~{layouts/main}">
 <head>
     <title>Liste des lieux de spectacle</title>
+    <link rel ="stylesheet" type ="text/css" href ="/webjars/boostrap/4.1.3/css/boostrap.min.css"/>
 </head>
 <body>
+
 <div class="container">
     <div layout:fragment="content">
         <h1 th:text="${title}">Liste des lieux de spectacle</h1>
-        <table th:unless="${#lists.isEmpty(locations)}">
+        <table class ="table" th:unless="${#lists.isEmpty(locations)}">
 
             <thead class="thead-dark">
             <tr>

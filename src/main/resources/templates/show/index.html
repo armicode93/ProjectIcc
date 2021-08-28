@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+<html   lang="fr"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
       layout:decorate="~{layouts/main}">
 <head>
     <title>Liste des spectacles</title>
+    <link rel ="stylesheet" type ="text/css" href ="/webjars/boostrap/4.1.3/css/boostrap.min.css"/>
 </head>
 <body>
 <div class="container">
     <div layout:fragment="content">
+
         <h1 th:text="${title}">Liste des spectacles</h1>
-        <ul th:unless="${#lists.isEmpty(shows)}">
-            <li th:each="show : ${shows}">
-                <span th:text="${show.title}">Ayiti</span>
-                <span th:if="${show.bookable}" th:text="${show.price} + ' €'">9.99 €</span>
+        <table class ="table" th:unless="${#lists.isEmpty(shows)}">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Spectacle</th>
+                <th scope="col">Price</th>
+                <th scope="col">Nombre reprentation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr scope="row"  th:each="show : ${shows}">
+                <td th:text="${show.title}">Ayiti</td>
+                <td th:if="${show.bookable}" th:text="${show.price} + ' €'">9.99 €</td>
 
                 <!--nombre totale de la liste de representations de un spectacle,quante respresentation ci sono-->
-
-                <span th:if="${#lists.size(show.representations)==1}">- 1représentation </span>
+                <td>
+                <span th:if="${#lists.size(show.representations)==1}"> 1 représentation </span>
                 <span th:if="${#lists.size(show.representations)>1}"
-                      th:text="|- ${#lists.size(show.representations)} représentations|">- 2représentations </span>
+                      th:text="|- ${#lists.size(show.representations)} représentations|"> 2 représentations </span>
                 <em th:if="${#lists.size(show.representations)==0}">aucune représentation</em>
+                </td>
 
 
+                <td>
+                <a th:href="@{/shows/{id}(id=${show.id})}">View</a></td>
+            </tr>
+            </tbody>
 
-                <a th:href="@{/shows/{id}(id=${show.id})}">View</a>
-            </li>
-        </ul>
+        </table>
     </div>
 </div>
 </body>
