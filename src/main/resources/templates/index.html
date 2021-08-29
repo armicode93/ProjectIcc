@@ -41,6 +41,8 @@
                 <li ><a th:href="@{/representations}">Representation</a></li>
                 <li ><a th:href="@{/types}">Type</a></li>
                 <li ><a th:href="@{/logout}">Logout</a></li>
+                <a class="navbar-brand" href="#" th:href="@{/login}">Registration and
+                    Login </a>
                <li> <a class="navbar-brand" href="#" th:href="@{/reservations/index}">Réservations</a></br></li>
                 <!-- we can add link for home, or about us ecc ecc, questo link andra nel securityConfig class -->
             </ul>
@@ -61,7 +63,8 @@
 <!--sec:authentification thymeleaf attribute to springSecurity
 principal.username sintax to take the username from the spring security object -->
 
-    Welcome <span sec:authentication="principal.username"></span>
+   <!-- <h5>Welcome <span sec:authentication="principal.username"></span></h5> -->
+        <h5>Welcome <a th:inline="text">[[${#httpServletRequest.remoteUser}]]</a></h5>
 
 
     </div>

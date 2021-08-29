@@ -46,14 +46,16 @@ public class ArtistType  {
         return id;
     }
 
-    
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Artist getArtist() {
         return artist;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setArtist( Long id) {
+        this.id = id;
     }
 
     public Type getType() {

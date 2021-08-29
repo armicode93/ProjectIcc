@@ -42,14 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
-    @Override// like this passimo authentificationProvider to the config methode
+    @Override// like this passiamo authentificationProvider to the config methode
     protected void configure (AuthenticationManagerBuilder auth) throws  Exception{
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select login as principal ,password as credentials ,true from users where login=?")
                 //con principal e credentials diciamo a spring che 1 e username e l'altro e password
                 //requette pour cherche le user
-                .authoritiesByUsernameQuery("select r.role,u.login FROM role_user ru,roles r,users u where r.id = ru.role_id AND ru.user_id = u.id and u.login=?")
+                .authoritiesByUsernameQuery("select r.role as role ,u.login as principal FROM role_user ru,roles r,users u where r.id = ru.role_id AND ru.user_id = u.id and u.login=?")
                 //pour recuperer le role de l'utilisateur
                 .passwordEncoder(passwordEncoder())
                 .rolePrefix("ROLE_");
@@ -67,6 +67,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
     protected  void configure(HttpSecurity http) throws Exception{ //we have a config method
         //we are going to provide our configuration
 
+        http.authorizeRequests().antMatchers(
+                "/registration", // we have provided the acces to the different url
+                "login",
+                 "index",
+                 "/"
+                ).permitAll()
+
+                //authenticate anyRequest to this url
+                .and()
+                .formLogin()// we are going to use a form login
+                .loginPage("/login") //costum login page
+                .permitAll()//al user can access to this url
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher( new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/login?logout")
+                .permitAll(); // permit acces to this url
 
         http.authorizeRequests().antMatchers("/artist/index").hasRole("USER");
         http.authorizeRequests().antMatchers("/locality/index").hasRole("USER");
@@ -98,33 +117,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
 
 
 
-
-
-
-        /* http.authorizeRequests().antMatchers(
-                "/registration", // we have provided the acces to the different url
-                "login",
-                 "index"
-                ).hasRole("USER");
-         http.authorizeRequests().antMatchers(
-                 "artist/**"
-         ).hasRole("ADMIN")
-                //authenticate anyRequest to this url
-                .and()
-                .formLogin()// we are going to use a form login
-                .loginPage("/login") //costum login page
-                .permitAll()//al user can access to this url
-                .and()
-                .logout()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher( new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout")
-                .permitAll(); // permit acces to this url
-
-         */
-        http.authorizeRequests().anyRequest().authenticated();
-        http.formLogin();
 
 
         http.exceptionHandling().accessDeniedPage("/403"); //redirection quando non possiamo accedere ad una pagina offlimits,

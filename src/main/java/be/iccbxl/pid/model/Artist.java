@@ -37,6 +37,10 @@ public class Artist {
 
     public Artist() {}
 
+    public Artist(Long id) {
+        this.id = id;
+    }
+
     public Artist(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;

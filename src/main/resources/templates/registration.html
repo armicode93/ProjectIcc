@@ -37,6 +37,7 @@
 <br>
         <!-- Creation Form registration -->
     <div class="container">
+        <div layout:fragment="content">
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -52,20 +53,20 @@
                 <label class="control-label" for="login"> Login </label>
                 <input id="login" class="form-control" th:field="*{login}"
                        required autofocus="autofocus" />
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('login')}"  th:errors="*{login}" th:errorclass="fieldError"></div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('login')}"  th:errors="*{login}" th:errorclass="error"></div>
 
 
                 <div class="form-group">
                     <label class="control-label" for="password"> Password </label> <input
                         id="password" class="form-control" type="password"
                         th:field="*{password}" required autofocus="autofocus" />
-                    <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}"  th:errors="*{password}" th:errorclass="fieldError"></div>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('password')}"  th:errors="*{password}" th:errorclass="error"></div>
                 </div>
 
                 <label class="control-label" for="firstname"> First Name </label>
                 <input id="firstname" class="form-control" th:field="*{firstname}"
                        required autofocus="autofocus" />
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('firstname')}"  th:errors="*{firstname}" th:errorclass="fieldError"></div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('firstname')}"  th:errors="*{firstname}" th:errorclass="error"></div>
 
 
             </div>
@@ -73,7 +74,7 @@
                 <label class="control-label" for="lastname"> LastName </label> <input
                     id="lastname" class="form-control" th:field="*{lastname}"
                     required autofocus="autofocus" />
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}"  th:errors="*{lastname}" th:errorclass="fieldError"></div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('lastname')}"  th:errors="*{lastname}" th:errorclass="error"></div>
             </div>
 
 
@@ -81,14 +82,14 @@
                 <label class="control-label" for="email"> Email </label> <input
                     id="email" class="form-control" th:field="*{email}" required
                     autofocus="autofocus" />
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}"  th:errors="*{email}" th:errorclass="fieldError"></div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}"  th:errors="*{email}" th:errorclass="error"></div>
             </div>
 
             <div class="form-group">
                 <label class="control-label" for="langue"> Langue </label> <input
                     id="langue" class="form-control"
                     th:field="*{langue}" required autofocus="autofocus" />
-                <div class="alert alert-warning" th:if="${#fields.hasErrors('langue')}"  th:errors="*{langue}" th:errorclass="fieldError"></div>
+                <div class="alert alert-warning" th:if="${#fields.hasErrors('langue')}"  th:errors="*{langue}" th:errorclass="error"></div>
             </div>
 
             <div class="form-group">
