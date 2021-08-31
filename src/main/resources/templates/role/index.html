@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html   lang="fr"
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org"
-        xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-        layout:decorate="~{layouts/main}">
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
+      layout:decorate="~{layouts/main}" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Liste des Role</title>
@@ -25,7 +25,7 @@
             <tr scope="row" th:each="role :${roles}">
 
                 <td th:text="${role.roleName}">Roles</td>
-           <td> <a th:href="@{'/roles/'+ ${role.id}}">View</a></td>
+           <td> <a sec:authorize= 'hasRole("admin")' th:href="@{'/roles/'+ ${role.id}}">View</a></td>
 
 
 
@@ -35,7 +35,7 @@
               th:action="@{'/roles/delete/'+ ${role.id}}" th:method="delete">
             <!--delete form -->
 
-            <a href="#"  th:onclick="|if(confirm('Confirm delete role #${role.id}'))
+            <a href="#" sec:authorize= 'hasRole("admin")'  th:onclick="|if(confirm('Confirm delete role #${role.id}'))
                 document.getElementById('deleteForm-${role.id}').submit();
                     return false;|">Delete</a> <!-- alert with javascript -->
 
@@ -47,7 +47,7 @@
 
 
 
-        <a th:href="@{'/roles/add/'}" class="btn btn-primary">Add New  Role</a>
+        <a sec:authorize= 'hasRole("admin")' th:href="@{'/roles/add/'}" class="btn btn-primary">Add New  Role</a>
 
     </div>
 </div>

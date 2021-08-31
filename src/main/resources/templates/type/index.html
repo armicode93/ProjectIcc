@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/main}">
 <head>
     <title>Liste des types</title>
@@ -20,14 +20,14 @@
             <tbody>
             <tr scope="row" th:each="type : ${types}">
                 <td th:text="${type.typeName}">Acteur</td>
-                <td><a th:href="@{'/types/'+${type.id}} ">View</a></td>
+                <td><a  sec:authorize= 'hasRole("admin")' th:href="@{'/types/'+${type.id}} ">View</a></td>
                 <!-- delete form -->
                 <td>
                     <form th:id="|deleteForm-${type.id}|"
                           th:action="@{'/types/delete/'+ ${type.id}}" th:method="delete">
                         <!--delete form -->
 
-                        <a href="#"  th:onclick="|if(confirm('Confirm delete type #${type.id}'))
+                        <a href="#" sec:authorize= 'hasRole("admin")' th:onclick="|if(confirm('Confirm delete type #${type.id}'))
                 document.getElementById('deleteForm-${type.id}').submit();
                     return false;|">Delete</a> <!-- alert with javascript -->
 
@@ -37,7 +37,7 @@
             </tbody>
         </table>
 
-        <a th:href="@{/types/add}" class="btn btn-primary">Add New Type</a>
+        <a sec:authorize= 'hasRole("admin")'th:href="@{/types/add}" class="btn btn-primary">Add New Type</a>
 
 
 

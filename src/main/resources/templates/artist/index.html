@@ -25,15 +25,15 @@
             <tr scope="row" th:each="artist : ${artists}">
                 <td th:text="${artist.firstname}">Bob</td>
                 <td th:text="${artist.lastname}">Sull</td>
-                <td><a th:href="@{'/artists/' +${artist.id}}">View</a></td>
+                <td><a  sec:authorize= 'hasRole("admin")' th:href="@{'/artists/' +${artist.id}}">View</a></td>
 
                 <!-- delete form -->
                 <td>
-                    <form th:id="|deleteForm-${artist.id}|"
+                    <form sec:authorize= 'hasRole("admin")' th:id="|deleteForm-${artist.id}|"
                           th:action="@{'/artists/delete/'+ ${artist.id}}" th:method="delete">
                         <!--delete form -->
 
-                            <a href="#"  th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
+                            <a href="#"  sec:authorize= 'hasRole("admin")' th:onclick="|if(confirm('Confirm delete artist #${artist.id}'))
                 document.getElementById('deleteForm-${artist.id}').submit();
                     return false;|">Delete</a> <!-- alert with javascript -->
 

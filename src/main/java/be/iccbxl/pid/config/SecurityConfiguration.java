@@ -44,6 +44,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
     }
     @Override// like this passiamo authentificationProvider to the config methode
     protected void configure (AuthenticationManagerBuilder auth) throws  Exception{
+
+
+
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("select login as principal ,password as credentials ,true from users where login=?")
@@ -53,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
                 //pour recuperer le role de l'utilisateur
                 .passwordEncoder(passwordEncoder())
                 .rolePrefix("ROLE_");
+
                 //con principal e credentials diciamo a spring che 1 e username e l'altro e password
        /* auth.inMemoryAuthentication().withUser("admin").roles("admin","user");    //ca veut dire que les user il sont en memoire pour le moment
         auth.inMemoryAuthentication().withUser("user").roles("user");
@@ -65,7 +69,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter { //this
 
     @Override // we are going to override config methods
     protected  void configure(HttpSecurity http) throws Exception{ //we have a config method
-        //we are going to provide our configuration
+
+
 
         http.authorizeRequests().antMatchers(
                 "/registration", // we have provided the acces to the different url

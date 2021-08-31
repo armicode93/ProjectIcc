@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ArtistService {
-    @Autowired
+    @Autowired // indicare a spring quali dipendenze richieste da un determinato oggetto
     private ArtistRepository artistRepository;
 
 

@@ -3,7 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.mx/thymeleaf/layout"
-      layout:decorate="~{layouts/main}">
+      layout:decorate="~{layouts/main}" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <title>Fiche d'une localité</title>
@@ -22,12 +22,12 @@
         <p th:if="${#lists.isEmpty(locality.locations)}">Aucun lieu de spectacle</p>
 
         <table>
-        <tr><td><a th:href="@{'/localities/edit/' +${locality.id}}" class="btn btn-default">Edit</a></td>
+        <tr><td><a sec:authorize= 'hasRole("admin")'th:href="@{'/localities/edit/' +${locality.id}}" class="btn btn-default">Edit</a></td>
         <form th:id="|deleteForm-${locality.id}|"
               th:action="@{'/localities/delete/'+ ${locality.id}}" th:method="delete">
             <!--delete form -->
 
-            <td><a href="#"  th:onclick="|if(confirm('Confirm delete locality #${locality.id}'))
+            <td><a href="#" sec:authorize= 'hasRole("admin")'  th:onclick="|if(confirm('Confirm delete locality #${locality.id}'))
                 document.getElementById('deleteForm-${locality.id}').submit();
                     return false;|" class="btn btn-danger">Delete</a></td> <!-- alert with javascript -->
 

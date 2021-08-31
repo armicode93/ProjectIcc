@@ -96,6 +96,8 @@
             <version>4.1.3</version>
         </dependency>
 
+        
+
         <dependency>
             <groupId>com.github.slugify</groupId> <!--enfin de generer automatiquement le slug, nous utilison la librairie Slugify -->
             <artifactId>slugify</artifactId>
